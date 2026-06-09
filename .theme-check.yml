@@ -1,0 +1,7 @@
+# NOCTRA — Theme Check configuration
+# Fonts are loaded from Google Fonts by design (Chakra Petch / Sora / JetBrains
+# Mono are not in Shopify's font library). RemoteAsset is therefore expected.
+extends: theme-check:recommended
+
+RemoteAsset:
+  enabled: false

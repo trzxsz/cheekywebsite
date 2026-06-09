@@ -10,7 +10,7 @@
         {%- assign c = collections[block.settings.collection] -%}
         <a class="cat noise" href="{% if c != blank %}{{ c.url }}{% else %}{{ routes.all_products_collection_url }}{% endif %}" data-reveal {{ block.shopify_attributes }}>
           {%- if c.featured_image != blank -%}
-            <img src="{{ c.featured_image | image_url: width: 600 }}" alt="{{ c.title | escape }}" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4">
+            <img src="{{ c.featured_image | image_url: width: 600 }}" alt="{{ c.title | escape }}" width="600" height="800" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4">
           {%- endif -%}
           <span class="cat__icon">{% render 'icon', icon: block.settings.icon %}</span>
           <div style="position:relative;z-index:1">

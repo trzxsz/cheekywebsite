@@ -30,7 +30,7 @@
           <div class="product__thumbs">
             {%- for media in product.media -%}
               <button type="button" class="product__thumb{% if forloop.first %} is-active{% endif %}" data-src="{{ media | image_url: width: 1200 }}" aria-label="Zdjęcie {{ forloop.index }}">
-                <img src="{{ media | image_url: width: 200 }}" alt="" loading="lazy">
+                <img src="{{ media | image_url: width: 200 }}" alt="" width="200" height="200" loading="lazy">
               </button>
             {%- endfor -%}
           </div>

@@ -26,7 +26,7 @@
           {%- for item in cart.items -%}
             <div class="cart-page__line surface">
               <a class="cart-line__media" href="{{ item.url }}">
-                {%- if item.image -%}<img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.product.title | escape }}">{%- else -%}<div class="media-ph"></div>{%- endif -%}
+                {%- if item.image -%}<img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.product.title | escape }}" width="160" height="160" loading="lazy">{%- else -%}<div class="media-ph"></div>{%- endif -%}
               </a>
               <div>
                 <a class="cart-line__title" href="{{ item.url }}">{{ item.product.title }}</a>
