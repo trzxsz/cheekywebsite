@@ -1,0 +1,4 @@
+{%- comment -%} Usage: {% render 'star-rating', rating: 4.9, count: 1284 %} {%- endcomment -%}
+{%- if rating and rating != blank and rating != 0 -%}
+  <span class="rating">{% render 'icon', icon: 'star' %} {{ rating }}{% if count and count != blank and count != 0 %} <span class="muted">({{ count }})</span>{% endif %}</span>
+{%- endif -%}

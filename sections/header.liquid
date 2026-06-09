@@ -1,0 +1,99 @@
+{%- liquid
+  assign menu = linklists[section.settings.menu]
+  assign brand = settings.brand_name | default: 'NOCTRA'
+-%}
+<header class="header noise">
+  <div class="container">
+    <div class="header__bar">
+
+      <button class="icon-btn burger" type="button" data-open="mobile-menu" aria-label="Menu">
+        {% render 'icon', icon: 'menu' %}
+      </button>
+
+      <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ brand }}">
+        {%- if settings.logo != blank -%}
+          {{ settings.logo | image_url: width: 320 | image_tag: alt: brand, style: 'width:{{ settings.logo_width }}px;height:auto' }}
+        {%- else -%}
+          {{ brand }}<span>.</span>
+        {%- endif -%}
+      </a>
+
+      <nav class="nav" aria-label="Główna nawigacja">
+        {%- for link in menu.links -%}
+          <div class="nav__item">
+            <a class="nav__link" href="{{ link.url }}">
+              {{ link.title }}
+              {%- if link.links.size > 0 %} {% render 'icon', icon: 'chevron-down' %}{% endif -%}
+            </a>
+            {%- if link.links.size > 0 -%}
+              {%- assign half = link.links.size | plus: 1 | divided_by: 2 -%}
+              <div class="mega">
+                <div class="mega__inner glass">
+                  <div class="mega__col">
+                    <h4>{{ link.title }}</h4>
+                    {%- for child in link.links limit: half -%}
+                      <a href="{{ child.url }}">{{ child.title }} {% render 'icon', icon: 'chevron-right' %}</a>
+                    {%- endfor -%}
+                  </div>
+                  <div class="mega__col">
+                    <h4>Więcej</h4>
+                    {%- for child in link.links offset: half -%}
+                      <a href="{{ child.url }}">{{ child.title }} {% render 'icon', icon: 'chevron-right' %}</a>
+                    {%- endfor -%}
+                  </div>
+                  <a class="mega__featured" href="{{ link.url }}">
+                    <span class="eyebrow">{{ link.title }}</span>
+                    <h5 class="mt-2">Zobacz całą kolekcję</h5>
+                    <p>Sprzęt zaprojektowany dla garażu, trasy i terenu.</p>
+                    <span class="btn btn--primary">Przeglądaj {% render 'icon', icon: 'arrow-right' %}</span>
+                  </a>
+                </div>
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </nav>
+
+      <div class="header__actions">
+        <button class="icon-btn" type="button" data-open="search-overlay" aria-label="Szukaj">
+          {% render 'icon', icon: 'search' %}
+        </button>
+        {%- if shop.customer_accounts_enabled -%}
+          <a class="icon-btn" href="{{ routes.account_url }}" aria-label="Konto">{% render 'icon', icon: 'user' %}</a>
+        {%- endif -%}
+        <button class="icon-btn" type="button" data-cart-open aria-label="Koszyk">
+          {% render 'icon', icon: 'cart' %}
+          <span class="cart-count{% if cart.item_count == 0 %} hidden{% endif %}" data-cart-count>{{ cart.item_count }}</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+{%- comment -%} Mobile drawer {%- endcomment -%}
+<nav id="mobile-menu" class="drawer-menu" data-closeable aria-label="Menu mobilne">
+  <div class="header__bar" style="height:auto;margin-bottom:1rem">
+    <span class="header__logo">{{ brand }}<span>.</span></span>
+    <button class="icon-btn" type="button" data-close aria-label="Zamknij">{% render 'icon', icon: 'x' %}</button>
+  </div>
+  {%- for link in menu.links -%}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+    {%- if link.links.size > 0 -%}
+      <div style="padding:.2rem 0 .6rem .4rem">
+        {%- for child in link.links -%}
+          <a href="{{ child.url }}" style="font-size:.95rem;font-family:var(--font-body);color:var(--muted);border:0;padding:.4rem 0">{{ child.title }}</a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</nav>
+
+{% schema %}
+{
+  "name": "Nagłówek",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

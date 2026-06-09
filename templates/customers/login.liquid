@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="container auth">
+    <div class="section-head" style="text-align:center"><span class="eyebrow" style="justify-content:center">KONTO</span><h1 style="font-size:2rem;margin-top:.5rem">Zaloguj się</h1></div>
+
+    {%- form 'customer_login' -%}
+      {%- if form.errors -%}<div class="form-errors">{{ form.errors | default_errors }}</div>{%- endif -%}
+      <div class="field"><label for="ce">E-mail</label><input type="email" name="customer[email]" id="ce" required autocomplete="email"></div>
+      <div class="field"><label for="cp">Hasło</label><input type="password" name="customer[password]" id="cp" required autocomplete="current-password"></div>
+      <button type="submit" class="btn btn--primary btn--block magnetic">Zaloguj się</button>
+    {%- endform -%}
+
+    <details class="mt-3">
+      <summary class="muted mono" style="cursor:pointer">Nie pamiętasz hasła?</summary>
+      {%- form 'recover_customer_password' -%}
+        <div class="field mt-2"><label for="re">E-mail</label><input type="email" name="email" id="re" required></div>
+        <button type="submit" class="btn btn--ghost btn--block">Wyślij link resetujący</button>
+      {%- endform -%}
+    </details>
+
+    <p class="muted mt-3" style="text-align:center">Nie masz konta? <a href="{{ routes.account_register_url }}" style="color:var(--molten)">Załóż konto</a></p>
+  </div>
+</section>

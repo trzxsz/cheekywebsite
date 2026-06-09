@@ -1,0 +1,60 @@
+<section class="section section--tight">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="features">
+      {%- for block in section.blocks -%}
+        <div class="feature" data-reveal data-reveal-delay="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+          <div class="feature__icon">{% render 'icon', icon: block.settings.icon %}</div>
+          <h3>{{ block.settings.heading }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Dlaczego my",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Nadtytuł", "default": "DLACZEGO NOCTRA" },
+    { "type": "text", "id": "heading", "label": "Nagłówek", "default": "Sprzęt, który nie zawodzi" }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Kolumna",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Ikona", "default": "truck",
+          "options": [
+            { "value": "truck", "label": "Wysyłka" },
+            { "value": "shield-check", "label": "Gwarancja" },
+            { "value": "rotate-ccw", "label": "Zwroty" },
+            { "value": "lock", "label": "Bezpieczeństwo" },
+            { "value": "zap", "label": "Moc" },
+            { "value": "sparkles", "label": "Jakość" }
+          ]
+        },
+        { "type": "text", "id": "heading", "label": "Nagłówek", "default": "Nagłówek" },
+        { "type": "textarea", "id": "text", "label": "Tekst", "default": "Krótki opis korzyści." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Dlaczego my",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "truck", "heading": "Wysyłka 24h", "text": "Zamów do 14:00 — wysyłamy tego samego dnia. Darmowo od 199 zł." } },
+        { "type": "item", "settings": { "icon": "shield-check", "heading": "2 lata gwarancji", "text": "Stoimy za każdym produktem. Wada? Wymieniamy bez pytań." } },
+        { "type": "item", "settings": { "icon": "rotate-ccw", "heading": "30 dni na zwrot", "text": "Nie pasuje? Odeślij w 30 dni i odzyskaj pełną kwotę." } },
+        { "type": "item", "settings": { "icon": "lock", "heading": "Bezpieczne płatności", "text": "BLIK, karty, Apple Pay, Przelewy24. Szyfrowanie SSL." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

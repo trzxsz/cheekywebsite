@@ -1,0 +1,17 @@
+<article class="section">
+  <div class="container" style="max-width:780px">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{{ article.published_at | date: '%d.%m.%Y' }}{% if article.author != blank %} · {{ article.author }}{% endif %}</span>
+      <h1 style="font-size:clamp(2rem,5vw,3.2rem);margin-top:.5rem">{{ article.title }}</h1>
+    </div>
+    {%- if article.image -%}
+      <img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.title | escape }}" style="width:100%;border-radius:var(--radius-lg);border:1px solid var(--line);margin-bottom:2rem" data-reveal>
+    {%- endif -%}
+    <div class="rte" data-reveal>{{ article.content }}</div>
+    <div class="mt-3"><a class="btn btn--ghost" href="{{ blog.url }}">{% render 'icon', icon: 'arrow-right' %} Wróć do bloga</a></div>
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Wpis", "settings": [] }
+{% endschema %}

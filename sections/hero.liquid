@@ -1,0 +1,109 @@
+{%- liquid
+  assign hp = section.settings.product
+  assign cta_link = section.settings.button_link
+  if cta_link == blank
+    if hp != blank
+      assign cta_link = hp.url
+    else
+      assign cta_link = routes.all_products_collection_url
+    endif
+  endif
+-%}
+<section class="hero noise">
+  <div class="hero__bg">
+    {%- if section.settings.enable_shader -%}
+      <canvas class="hero__shader" data-shader aria-hidden="true"></canvas>
+    {%- else -%}
+      <div class="bg-grid" style="position:absolute;inset:0"></div>
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', sizes: '100vw', widths: '800,1200,1600,2000,2400', alt: section.settings.heading | escape }}
+      {%- endif -%}
+    {%- endif -%}
+    <div class="bg-radial-molten" style="position:absolute;inset:0;z-index:1"></div>
+  </div>
+  <div class="hero__veil"></div>
+
+  <div class="hero__inner">
+    <div class="container">
+      <div class="hero__layout">
+
+        <div class="hero__copy">
+          {%- if section.settings.eyebrow != blank -%}
+            <span class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</span>
+          {%- endif -%}
+          <h1 class="mt-2 text-steel" data-reveal data-reveal-delay="1">{{ section.settings.heading | newline_to_br }}</h1>
+          {%- if section.settings.subheading != blank -%}
+            <p data-reveal data-reveal-delay="2">{{ section.settings.subheading }}</p>
+          {%- endif -%}
+
+          <div class="hero__cta" data-reveal data-reveal-delay="3">
+            {%- if section.settings.button_label != blank -%}
+              <a class="btn btn--primary btn--lg magnetic" href="{{ cta_link }}">
+                {{ section.settings.button_label }} {% render 'icon', icon: 'arrow-right' %}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.button2_label != blank -%}
+              <a class="btn btn--ghost btn--lg" href="{{ section.settings.button2_link | default: '#bestsellers' }}">{{ section.settings.button2_label }}</a>
+            {%- endif -%}
+          </div>
+
+          {%- if hp != blank -%}
+            <div class="hero__pmeta" data-reveal data-reveal-delay="4">
+              <span class="hero__chip mono">{% render 'icon', icon: 'check' %} Dostępne od ręki</span>
+              {% render 'price', product: hp %}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="hero__product" data-reveal data-reveal-delay="2">
+          <div class="hero__pvisual">
+            {%- if hp != blank and hp.featured_media != blank -%}
+              <a href="{{ hp.url }}">{{ hp.featured_media | image_url: width: 900 | image_tag: loading: 'eager', sizes: '(min-width:1000px) 40vw, 80vw', widths: '400,600,800,900', alt: hp.title | escape }}</a>
+            {%- else -%}
+              <div class="media-ph" style="--ph-accent:var(--molten)">
+                {% render 'icon', icon: 'flashlight' %}
+                <span class="media-ph__label">{{ section.settings.product_placeholder_name | default: 'VANTA COB-DUO' }}</span>
+              </div>
+            {%- endif -%}
+            <span class="hero__pglow" aria-hidden="true"></span>
+          </div>
+          <div class="hero__ptag mono">
+            <span>{{ hp.title | default: section.settings.product_placeholder_name | default: 'VANTA COB-DUO 1600' }}</span>
+            <span class="muted">1600 LM · 360° · IP65 · USB-C</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {%- if section.settings.show_scroll -%}
+    <div class="hero__scroll">Scroll {% render 'icon', icon: 'chevron-down' %}</div>
+  {%- endif -%}
+</section>
+
+{%- if section.settings.enable_shader -%}
+  <script src="{{ 'shader-bg.js' | asset_url }}" defer></script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "checkbox", "id": "enable_shader", "label": "Animowane tło (shader WebGL)", "default": true },
+    { "type": "product", "id": "product", "label": "Główny produkt (lampa COB)" },
+    { "type": "text", "id": "product_placeholder_name", "label": "Nazwa produktu (gdy brak wybranego)", "default": "VANTA COB-DUO 1600" },
+    { "type": "text", "id": "eyebrow", "label": "Nadtytuł", "default": "NOCTRA · PERFORMANCE LIGHTING" },
+    { "type": "textarea", "id": "heading", "label": "Nagłówek", "default": "Zapanuj nad\nciemnością." },
+    { "type": "text", "id": "subheading", "label": "Podtytuł", "default": "Dwustronna magnetyczna lampa COB z hakami i USB-C. Światło tam, gdzie go potrzebujesz — bez trzymania w ręku." },
+    { "type": "text", "id": "button_label", "label": "Przycisk 1 — tekst", "default": "Kup teraz" },
+    { "type": "url", "id": "button_link", "label": "Przycisk 1 — link (domyślnie produkt)" },
+    { "type": "text", "id": "button2_label", "label": "Przycisk 2 — tekst", "default": "Zobacz bestsellery" },
+    { "type": "url", "id": "button2_link", "label": "Przycisk 2 — link" },
+    { "type": "image_picker", "id": "image", "label": "Obraz tła (gdy shader wyłączony)" },
+    { "type": "url", "id": "video_url", "label": "Link do filmu (opcjonalny)" },
+    { "type": "checkbox", "id": "show_scroll", "label": "Pokaż wskaźnik scroll", "default": true }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

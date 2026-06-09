@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local tooling (Claude skills) — not part of the theme
 .claude/
+
+# Shopify CLI
+.shopify/

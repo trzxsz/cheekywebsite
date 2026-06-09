@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="container">
+    <div class="section-head"><span class="eyebrow">TWOJE KONTO</span><h1 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Cześć, {{ customer.first_name | default: customer.email }}</h1></div>
+
+    <div class="account-grid">
+      <div>
+        <h3 class="mb-2" style="margin-bottom:1rem">Historia zamówień</h3>
+        {%- if customer.orders.size > 0 -%}
+          <div class="surface" style="padding:1rem;overflow-x:auto">
+            <table class="table">
+              <thead><tr><th>Zamówienie</th><th>Data</th><th>Status</th><th>Suma</th></tr></thead>
+              <tbody>
+                {%- for order in customer.orders -%}
+                  <tr>
+                    <td><a href="{{ order.customer_url }}" style="color:var(--molten)">{{ order.name }}</a></td>
+                    <td>{{ order.created_at | date: '%d.%m.%Y' }}</td>
+                    <td>{{ order.financial_status_label }} · {{ order.fulfillment_status_label }}</td>
+                    <td class="mono">{{ order.total_net_amount | money }}</td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+        {%- else -%}
+          <div class="surface" style="padding:2rem;text-align:center"><p class="muted">Brak zamówień.</p><a class="btn btn--primary mt-3" href="{{ routes.all_products_collection_url }}">Pierwsze zakupy</a></div>
+        {%- endif -%}
+      </div>
+
+      <aside>
+        <div class="surface" style="padding:1.3rem">
+          <h4 class="mono" style="color:var(--muted);margin-bottom:.8rem">DANE</h4>
+          <p>{{ customer.name }}</p>
+          <p class="muted">{{ customer.email }}</p>
+          {%- if customer.default_address -%}<p class="muted mt-2">{{ customer.default_address.summary }}</p>{%- endif -%}
+          <a class="btn btn--ghost btn--block mt-3" href="{{ routes.account_addresses_url }}">Adresy</a>
+          <a class="btn btn--ghost btn--block mt-1" href="{{ routes.account_logout_url }}">Wyloguj się</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>

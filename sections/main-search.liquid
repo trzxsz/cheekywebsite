@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">WYSZUKIWANIE</span>
+      <h1 style="font-size:clamp(1.8rem,5vw,3rem);margin-top:.5rem">
+        {%- if search.performed -%}Wyniki dla „{{ search.terms | escape }}"{%- else -%}Czego szukasz?{%- endif -%}
+      </h1>
+    </div>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-page-form">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="Lampa COB, endoskop, organizer…" aria-label="Szukaj">
+      <button type="submit" class="btn btn--primary magnetic">{% render 'icon', icon: 'search' %} Szukaj</button>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results.size > 0 -%}
+        <div class="product-grid mt-3">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- else -%}
+              <a class="surface" href="{{ item.url }}" style="padding:1.2rem;display:block">
+                <span class="mono muted">{{ item.object_type }}</span>
+                <h3 class="card__title">{{ item.title }}</h3>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="surface mt-3" style="padding:3rem;text-align:center">
+          <p class="muted">Brak wyników dla „{{ search.terms | escape }}".</p>
+          <a class="btn btn--primary mt-3" href="{{ routes.all_products_collection_url }}">Zobacz wszystkie produkty</a>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Wyszukiwanie", "settings": [] }
+{% endschema %}

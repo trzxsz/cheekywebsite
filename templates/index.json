@@ -1,0 +1,97 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "NOCTRA · PERFORMANCE LIGHTING",
+        "heading": "Zapanuj nad\nciemnością.",
+        "subheading": "Magnetyczne lampy COB, endoskopy USB-C i EDC zaprojektowane dla tych, którzy nie odpuszczają po zmroku.",
+        "button_label": "Kup teraz",
+        "button2_label": "Zobacz bestsellery",
+        "show_scroll": true
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "blocks": {
+        "m1": { "type": "item", "settings": { "icon": "truck", "text": "Wysyłka 24h" } },
+        "m2": { "type": "item", "settings": { "icon": "shield-check", "text": "2 lata gwarancji" } },
+        "m3": { "type": "item", "settings": { "icon": "rotate-ccw", "text": "30 dni na zwrot" } },
+        "m4": { "type": "item", "settings": { "icon": "star", "text": "4.9/5 od kierowców" } },
+        "m5": { "type": "item", "settings": { "icon": "lock", "text": "Bezpieczne płatności" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5"]
+    },
+    "bestsellers": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "TOP WYBÓR KIEROWCÓW",
+        "heading": "Bestsellery",
+        "subheading": "Najczęściej wybierany sprzęt NOCTRA. Sprawdzony w garażu i w terenie.",
+        "products_count": 8,
+        "button_label": "Zobacz wszystkie"
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "settings": { "eyebrow": "KATEGORIE", "heading": "Czego dziś potrzebujesz?" },
+      "blocks": {
+        "c1": { "type": "category", "settings": { "title": "Oświetlenie", "icon": "flashlight" } },
+        "c2": { "type": "category", "settings": { "title": "Inspekcja", "icon": "camera" } },
+        "c3": { "type": "category", "settings": { "title": "Narzędzia & EDC", "icon": "wrench" } },
+        "c4": { "type": "category", "settings": { "title": "Organizacja", "icon": "box" } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"]
+    },
+    "why": {
+      "type": "icon-columns",
+      "settings": { "eyebrow": "DLACZEGO NOCTRA", "heading": "Sprzęt, który nie zawodzi" },
+      "blocks": {
+        "w1": { "type": "item", "settings": { "icon": "truck", "heading": "Wysyłka 24h", "text": "Zamów do 14:00 — wysyłamy tego samego dnia. Darmowo od 199 zł." } },
+        "w2": { "type": "item", "settings": { "icon": "shield-check", "heading": "2 lata gwarancji", "text": "Stoimy za każdym produktem. Wada? Wymieniamy bez pytań." } },
+        "w3": { "type": "item", "settings": { "icon": "rotate-ccw", "heading": "30 dni na zwrot", "text": "Nie pasuje? Odeślij w 30 dni i odzyskaj pełną kwotę." } },
+        "w4": { "type": "item", "settings": { "icon": "lock", "heading": "Bezpieczne płatności", "text": "BLIK, karty, Apple Pay, Przelewy24. Szyfrowanie SSL." } }
+      },
+      "block_order": ["w1", "w2", "w3", "w4"]
+    },
+    "lifestyle": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "AUTOMOTIVE LIFESTYLE",
+        "heading": "Zbudowane dla tych, którzy nie odpuszczają",
+        "text": "<p>Każdy produkt NOCTRA przechodzi testy w realnych warunkach — od garażu po bezdroża. Bez kompromisów, bez taniej plastikowej tandety.</p>",
+        "button_label": "Poznaj markę"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": { "eyebrow": "4.9/5 · PONAD 3000 OPINII", "heading": "Kierowcy nam ufają" },
+      "blocks": {
+        "t1": { "type": "quote", "settings": { "quote": "Magnes trzyma lampę na masce jak przyspawany. Światło mocne i równe — robota w garażu to teraz przyjemność.", "author": "Tomasz R.", "role": "Zweryfikowany zakup", "rating": 5 } },
+        "t2": { "type": "quote", "settings": { "quote": "Endoskop USB-C podłączyłem do telefonu i od razu znalazłem przyczynę stuku w silniku. Bezcenne.", "author": "Kasia D.", "role": "Zweryfikowany zakup", "rating": 5 } },
+        "t3": { "type": "quote", "settings": { "quote": "Zamówiłem w piątek, w poniedziałek było. Jakość premium, czuć różnicę od pierwszego chwytu.", "author": "Paweł S.", "role": "Zweryfikowany zakup", "rating": 5 } }
+      },
+      "block_order": ["t1", "t2", "t3"]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": { "eyebrow": "MASZ PYTANIA?", "heading": "Najczęstsze pytania" },
+      "blocks": {
+        "f1": { "type": "item", "settings": { "question": "Jak szybko realizujecie zamówienia?", "answer": "<p>Zamówienia złożone do 14:00 wysyłamy tego samego dnia roboczego. Dostawa zwykle trwa 1–2 dni robocze.</p>" } },
+        "f2": { "type": "item", "settings": { "question": "Czy mogę zwrócić produkt?", "answer": "<p>Tak — masz 30 dni na zwrot bez podania przyczyny. Zwracamy pełną kwotę po otrzymaniu produktu.</p>" } },
+        "f3": { "type": "item", "settings": { "question": "Jak działa gwarancja?", "answer": "<p>Każdy produkt objęty jest 2-letnią gwarancją. W razie wady wymieniamy sprzęt na nowy.</p>" } },
+        "f4": { "type": "item", "settings": { "question": "Czy endoskop zadziała z moim telefonem?", "answer": "<p>Modele z USB-C działają bezpośrednio. Do starszych telefonów z Lightning potrzebny jest adapter OTG.</p>" } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "DOŁĄCZ DO ZAŁOGI",
+        "heading": "-10% na start",
+        "text": "Zapisz się i odbierz kod rabatowy. Premiery, dropy i porady prosto na maila."
+      }
+    }
+  },
+  "order": ["hero", "marquee", "bestsellers", "categories", "why", "lifestyle", "testimonials", "faq", "newsletter"]
+}

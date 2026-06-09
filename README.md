@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NOCTRA — motyw Shopify
 
-## Getting Started
+> **Own the dark.** Premium, ciemny motyw automotive (cyber garage / performance tuning) dla sklepu z oświetleniem warsztatowym, narzędziami inspekcyjnymi i EDC dla kierowców.
 
-First, run the development server:
+Motyw Shopify **Online Store 2.0** (Liquid), gotowy do importu z GitHuba. Zero zależności front-endowych — animowane tło to czysty **WebGL**, interakcje to czysty JS.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Co zawiera
+
+- **Kinowy hero** z animowanym tłem shadera (WebGL, kolory marki, pauza poza ekranem, `prefers-reduced-motion`).
+- **Ekspozycja głównego produktu** (lampa COB) w hero.
+- Sticky **nagłówek** z mega menu, animowaną wyszukiwarką i licznikiem koszyka.
+- **Wysuwany koszyk (drawer)** z AJAX, paskiem darmowej wysyłki i upsellami.
+- Strona **produktu**: galeria + miniatury, warianty (chipy), sticky add-to-cart, akordeony (opis/specyfikacja/dostawa), trust badges, produkty powiązane, schema.org.
+- Strona **kolekcji**: siatka, sortowanie, filtry (Search & Discovery), paginacja.
+- Sekcje home: bestsellery, kategorie, „dlaczego my", opinie, FAQ, newsletter, lifestyle, pasek zaufania.
+- **Konto klienta**: logowanie, rejestracja, konto, zamówienie, adresy, reset/aktywacja hasła.
+- **SEO**: meta, OpenGraph, Twitter, JSON-LD (Organization + Product).
+- Strona **hasła**, **404**, **wyszukiwania**, **bloga**, **wpisu**, **listy kolekcji**.
+- Wishlist (localStorage), magnetyczne przyciski, reveal-on-scroll.
+
+## 🎨 System wizualny
+
+- **Kolory** (edytowalne w *Motyw → Dostosuj → Ustawienia → Kolory*): graphite `#0a0a0c`, molten `#ff4d2e`, ember `#ff9500`, volt `#2e7bff`.
+- **Fonty**: Chakra Petch (nagłówki), Sora (tekst), JetBrains Mono (etykiety/specyfikacje).
+
+## 🗂 Struktura
+
+```
+layout/        theme.liquid, password.liquid
+templates/     index, product, collection, cart, page, search, 404,
+               blog, article, list-collections, password + customers/*
+sections/      header(+group), footer(+group), hero, featured-collection,
+               collection-list, icon-columns, testimonials, faq, newsletter,
+               image-with-text, marquee, main-* (product/collection/cart/…)
+snippets/      icon, price, star-rating, product-card, product-media,
+               cart-drawer, search-overlay, meta-tags
+assets/        base.css, theme.js, shader-bg.js
+config/        settings_schema.json, settings_data.json
+locales/       en.default.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Import z GitHuba do Shopify (krok po kroku)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. W panelu Shopify wejdź w **Sklep online → Szablony**.
+2. Kliknij **Dodaj szablon → Połącz z GitHub** (Connect from GitHub).
+3. Zaloguj się do GitHub i autoryzuj aplikację Shopify.
+4. Wybierz repozytorium **`trzxsz/cheekywebsite`** i gałąź **`main`**.
+5. Shopify zaimportuje motyw **NOCTRA**. Kliknij **Opublikuj**, gdy będziesz gotów.
 
-## Learn More
+> Każdy `git push` na `main` automatycznie zsynchronizuje zmiany do Shopify.
 
-To learn more about Next.js, take a look at the following resources:
+### Po imporcie — konfiguracja (5 minut)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Menu**: *Sklep online → Nawigacja* → edytuj menu `main-menu` (Oświetlenie, Inspekcja, Narzędzia & EDC, Organizacja). Pozycje z podpunktami tworzą mega menu. Utwórz też menu `footer`.
+2. **Produkty**: dodaj produkty i przypisz je do **kolekcji**, których uchwyty (handle) wpisałeś w menu (np. `lampy-cob`, `endoskopy-usb-c`).
+3. **Hero**: *Dostosuj → sekcja Hero* → w polu „Główny produkt" wybierz lampę COB.
+4. **Bestsellery**: *Dostosuj → Polecane produkty* → wskaż kolekcję `bestsellery`.
+5. **Tagi produktów** (sterują kartami): `bestseller`, `new`, `limited`. Placeholder ikony: tag `icon:flashlight` / `icon:camera` …, kolor `accent:volt`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛒 Gotowy opis produktu — lampa COB (wklej w Shopify)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Tytuł:** VANTA COB-DUO 1600 — dwustronna magnetyczna lampa warsztatowa
+**Tagi:** `bestseller`, `icon:flashlight`, `accent:molten`
+**Opis:**
+> Dwie listwy COB, dwa magnesy, dwa haki — światło dokładnie tam, gdzie pracujesz. Przyklej do maski, zawieś na masce chłodnicy albo trzymaj w dłoni. 1600 lumenów równego światła, korpus obrotowy 360°, ładowanie USB-C.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Warianty:** Kolor (Molten Red / Stealth Black) × Moc (1200 lm / 1600 lm)
+**Specyfikacja (metafield `custom.specs`):** 1600 lm · akumulator 4000 mAh · do 8 h · USB-C · IP65 · magnes + haki + obrót 360°
+
+---
+
+## 🧑‍💻 Podgląd lokalny (opcjonalnie)
+
+Wymaga darmowego konta **Shopify Partners** + sklepu testowego:
+
+```bash
+npm install -g @shopify/cli@latest
+shopify theme dev        # podgląd na żywo
+shopify theme check      # walidacja motywu
+```
+
+## 📦 Gałęzie
+
+- **`main`** — motyw Shopify (ten dokument).
+- **`nextjs-reference`** — wcześniejszy szkielet headless Next.js (zachowany jako referencja designu).
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)

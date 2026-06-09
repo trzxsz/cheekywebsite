@@ -1,0 +1,15 @@
+{%- comment -%} Full-screen search overlay {%- endcomment -%}
+<div id="search-overlay" class="search-overlay" data-closeable aria-hidden="true">
+  <div class="search-box">
+    <form action="{{ routes.search_url }}" method="get" role="search">
+      <input type="search" name="q" placeholder="Czego szukasz? Lampa COB, endoskop…" aria-label="Szukaj" autocomplete="off">
+      <input type="hidden" name="options[prefix]" value="last">
+    </form>
+    <div class="mono mt-3" style="display:flex;gap:.6rem;flex-wrap:wrap;color:var(--muted)">
+      <span>Popularne:</span>
+      <a href="{{ routes.search_url }}?q=lampa">lampa COB</a>
+      <a href="{{ routes.search_url }}?q=endoskop">endoskop</a>
+      <a href="{{ routes.search_url }}?q=magnetyczna">magnetyczna</a>
+    </div>
+  </div>
+</div>

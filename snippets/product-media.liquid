@@ -1,0 +1,28 @@
+{%- comment -%}
+  Renders a product's featured image, or a branded placeholder when there is
+  no image yet. Control the placeholder via product tags:
+    icon:flashlight   accent:volt
+  Usage: {% render 'product-media', product: product, sizes: '(min-width:1000px) 25vw, 50vw' %}
+{%- endcomment -%}
+{%- liquid
+  assign ph_icon = 'package'
+  assign ph_accent = 'molten'
+  for t in product.tags
+    assign td = t | downcase
+    if td contains 'icon:'
+      assign ph_icon = td | remove: 'icon:' | strip
+    endif
+    if td contains 'accent:'
+      assign ph_accent = td | remove: 'accent:' | strip
+    endif
+  endfor
+  assign img_sizes = sizes | default: '(min-width: 1000px) 25vw, 50vw'
+-%}
+{%- if product.featured_media -%}
+  {{ product.featured_media | image_url: width: 800 | image_tag: loading: 'lazy', sizes: img_sizes, widths: '200,300,400,600,800,1000', alt: product.title | escape }}
+{%- else -%}
+  <div class="media-ph" style="--ph-accent: var(--{{ ph_accent }})">
+    {% render 'icon', icon: ph_icon %}
+    <span class="media-ph__label">{{ product.title | escape }}</span>
+  </div>
+{%- endif -%}

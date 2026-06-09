@@ -1,0 +1,16 @@
+<section class="section noise" style="min-height:60vh;display:grid;place-items:center;text-align:center">
+  <div class="bg-radial-molten" style="position:absolute;inset:0;z-index:0"></div>
+  <div class="container" style="position:relative;z-index:1;max-width:560px">
+    <div class="eyebrow" style="justify-content:center">ERROR · 404</div>
+    <h1 class="text-steel mt-2" style="font-size:clamp(3rem,12vw,7rem)">404</h1>
+    <p class="muted mt-2">Ta strona zgasła. Wróćmy tam, gdzie jest światło.</p>
+    <div class="hero__cta mt-3" style="justify-content:center">
+      <a class="btn btn--primary btn--lg magnetic" href="{{ routes.root_url }}">{% render 'icon', icon: 'arrow-right' %} Strona główna</a>
+      <a class="btn btn--ghost btn--lg" href="{{ routes.all_products_collection_url }}">Sklep</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}

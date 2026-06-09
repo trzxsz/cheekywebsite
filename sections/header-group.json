@@ -1,0 +1,19 @@
+{
+  "type": "header",
+  "name": "Nagłówek",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Darmowa wysyłka od 199 zł · Wysyłka 24h · 30 dni na zwrot"
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": ["announcement-bar", "header"]
+}

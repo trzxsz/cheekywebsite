@@ -1,0 +1,50 @@
+<section class="section--tight">
+  <div class="marquee">
+    <div class="marquee__track">
+      {%- for i in (1..2) -%}
+        {%- for block in section.blocks -%}
+          <span {{ block.shopify_attributes }}>{% render 'icon', icon: block.settings.icon %} {{ block.settings.text }}</span>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pasek zaufania",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Element",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Tekst", "default": "Darmowa wysyłka od 199 zł" },
+        {
+          "type": "select", "id": "icon", "label": "Ikona", "default": "truck",
+          "options": [
+            { "value": "truck", "label": "Wysyłka" },
+            { "value": "shield-check", "label": "Gwarancja" },
+            { "value": "rotate-ccw", "label": "Zwroty" },
+            { "value": "lock", "label": "Bezpieczeństwo" },
+            { "value": "star", "label": "Gwiazdka" },
+            { "value": "zap", "label": "Błyskawica" }
+          ]
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Pasek zaufania",
+      "blocks": [
+        { "type": "item", "settings": { "icon": "truck", "text": "Wysyłka 24h" } },
+        { "type": "item", "settings": { "icon": "shield-check", "text": "2 lata gwarancji" } },
+        { "type": "item", "settings": { "icon": "rotate-ccw", "text": "30 dni na zwrot" } },
+        { "type": "item", "settings": { "icon": "star", "text": "4.9/5 od kierowców" } },
+        { "type": "item", "settings": { "icon": "lock", "text": "Bezpieczne płatności" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

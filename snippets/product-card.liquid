@@ -1,0 +1,46 @@
+{%- comment -%} Usage: {% render 'product-card', product: product %} {%- endcomment -%}
+{%- liquid
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+  assign rating = product.metafields.reviews.rating.value.rating | default: product.metafields.custom.rating
+  assign rating_count = product.metafields.reviews.rating_count | default: product.metafields.custom.rating_count
+  assign variant = product.selected_or_first_available_variant
+-%}
+<article class="card" data-reveal>
+  <a class="card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+    {% render 'product-media', product: product %}
+  </a>
+
+  <div class="card__badges">
+    {%- if product.tags contains 'bestseller' -%}<span class="badge badge--bestseller">Bestseller</span>{%- endif -%}
+    {%- if product.tags contains 'new' or product.tags contains 'nowość' -%}<span class="badge badge--new">Nowość</span>{%- endif -%}
+    {%- if product.tags contains 'limited' -%}<span class="badge badge--limited">Limited</span>{%- endif -%}
+    {%- if on_sale -%}<span class="badge badge--sale">-{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%</span>{%- endif -%}
+  </div>
+
+  <button class="card__wish" type="button" data-wish="{{ product.id }}" aria-label="Dodaj do ulubionych">
+    {% render 'icon', icon: 'heart' %}
+  </button>
+
+  {%- if variant -%}
+    <div class="card__quick">
+      <form data-add-form method="post" action="{{ routes.cart_add_url }}">
+        <input type="hidden" name="id" value="{{ variant.id }}">
+        <button type="submit" class="btn btn--primary btn--block magnetic" {% unless variant.available %}disabled{% endunless %}>
+          {% if variant.available %}{% render 'icon', icon: 'cart' %} Szybki dodaj{% else %}Niedostępny{% endif %}
+        </button>
+      </form>
+    </div>
+  {%- endif -%}
+
+  <div class="card__body">
+    {%- if product.vendor != blank -%}<div class="card__vendor">{{ product.vendor }}</div>{%- endif -%}
+    <h3 class="card__title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <div class="card__meta">
+      {% render 'price', product: product %}
+      {% render 'star-rating', rating: rating, count: rating_count %}
+    </div>
+  </div>
+</article>

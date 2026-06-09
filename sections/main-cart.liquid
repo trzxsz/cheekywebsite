@@ -1,0 +1,62 @@
+<section class="section">
+  <div class="container" style="max-width:900px">
+    <div class="section-head"><span class="eyebrow">KOSZYK</span><h1 style="font-size:clamp(2rem,5vw,3rem);margin-top:.5rem">Twój koszyk</h1></div>
+
+    {%- if cart.item_count == 0 -%}
+      <div class="surface" style="padding:3rem;text-align:center">
+        <p class="muted">Twój koszyk jest pusty.</p>
+        <a class="btn btn--primary mt-3" href="{{ routes.all_products_collection_url }}">Przeglądaj produkty</a>
+      </div>
+    {%- else -%}
+
+      {%- if settings.free_shipping_threshold > 0 -%}
+        {%- assign threshold = settings.free_shipping_threshold | times: 100 -%}
+        <div class="ship-bar surface" style="padding:1rem 1.3rem;border-radius:var(--radius);margin-bottom:1.5rem">
+          {%- if cart.total_price >= threshold -%}
+            <div>🎉 Masz <strong>darmową wysyłkę</strong>!</div>
+          {%- else -%}
+            <div>Do darmowej wysyłki brakuje <strong>{{ threshold | minus: cart.total_price | money }}</strong></div>
+          {%- endif -%}
+          <div class="ship-bar__track"><div class="ship-bar__fill" style="width:{% if cart.total_price >= threshold %}100{% else %}{{ cart.total_price | times: 100 | divided_by: threshold }}{% endif %}%"></div></div>
+        </div>
+      {%- endif -%}
+
+      <form action="{{ routes.cart_url }}" method="post" id="cart-form">
+        <div class="cart-page">
+          {%- for item in cart.items -%}
+            <div class="cart-page__line surface">
+              <a class="cart-line__media" href="{{ item.url }}">
+                {%- if item.image -%}<img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.product.title | escape }}">{%- else -%}<div class="media-ph"></div>{%- endif -%}
+              </a>
+              <div>
+                <a class="cart-line__title" href="{{ item.url }}">{{ item.product.title }}</a>
+                {%- unless item.product.has_only_default_variant -%}<div class="cart-line__opt">{{ item.variant.title }}</div>{%- endunless -%}
+                <div class="mono mt-1">{{ item.final_price | money }}</div>
+              </div>
+              <div class="cart-page__controls">
+                <div class="qty">
+                  <a href="{{ item.url_to_remove | default: '#' }}" data-change="{{ item.index | plus: 1 }}" data-qty="dec" aria-label="Mniej">{% render 'icon', icon: 'minus' %}</a>
+                  <span>{{ item.quantity }}</span>
+                  <a href="{{ item.url_to_add | default: '#' }}" data-change="{{ item.index | plus: 1 }}" data-qty="inc" aria-label="Więcej">{% render 'icon', icon: 'plus' %}</a>
+                </div>
+                <a class="muted mono cart-line__remove" href="{{ item.url_to_remove }}">Usuń</a>
+                <div class="mono"><strong>{{ item.final_line_price | money }}</strong></div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <div class="cart-page__foot surface">
+          <div class="cart-drawer__sub" style="font-size:1.2rem"><span>Suma</span><strong>{{ cart.total_price | money }}</strong></div>
+          <p class="muted mono" style="font-size:.78rem">Podatki i wysyłka liczone przy kasie.</p>
+          <button type="submit" name="checkout" class="btn btn--primary btn--lg btn--block magnetic mt-2">{% render 'icon', icon: 'lock' %} Przejdź do kasy</button>
+          <a class="btn btn--ghost btn--block mt-1" href="{{ routes.all_products_collection_url }}">Kontynuuj zakupy</a>
+        </div>
+      </form>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Koszyk", "settings": [] }
+{% endschema %}

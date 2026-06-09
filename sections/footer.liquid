@@ -1,0 +1,60 @@
+{%- assign brand = settings.brand_name | default: 'NOCTRA' -%}
+<footer class="footer noise">
+  <div class="container">
+    <div class="footer__top">
+
+      <div class="footer__brand" data-reveal>
+        <div class="header__logo">{{ brand }}<span>.</span></div>
+        <p>{{ section.settings.footer_text | default: 'Inżynieria światła i narzędzi inspekcyjnych dla kierowców. Zaprojektowane dla garażu, trasy i terenu.' }}</p>
+        <div class="footer__social">
+          {%- if settings.social_instagram != blank -%}<a class="icon-btn" href="{{ settings.social_instagram }}" aria-label="Instagram" target="_blank" rel="noopener">{% render 'icon', icon: 'instagram' %}</a>{%- endif -%}
+          {%- if settings.social_tiktok != blank -%}<a class="icon-btn" href="{{ settings.social_tiktok }}" aria-label="TikTok" target="_blank" rel="noopener">{% render 'icon', icon: 'tiktok' %}</a>{%- endif -%}
+          {%- if settings.social_youtube != blank -%}<a class="icon-btn" href="{{ settings.social_youtube }}" aria-label="YouTube" target="_blank" rel="noopener">{% render 'icon', icon: 'youtube' %}</a>{%- endif -%}
+        </div>
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'menu' -%}
+          {%- assign fmenu = linklists[block.settings.menu] -%}
+          <div class="footer__col" data-reveal {{ block.shopify_attributes }}>
+            <h4>{{ block.settings.heading | default: fmenu.title }}</h4>
+            {%- for link in fmenu.links -%}
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+
+    <div class="footer__bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ brand }}. Wszelkie prawa zastrzeżone.</span>
+      {%- if section.settings.show_payment_icons -%}
+        <div class="payment-icons">
+          <span>VISA</span><span>MASTERCARD</span><span>BLIK</span><span>APPLE&nbsp;PAY</span><span>P24</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Stopka",
+  "settings": [
+    { "type": "textarea", "id": "footer_text", "label": "Opis marki" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Pokaż ikony płatności", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Kolumna menu",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Nagłówek kolumny" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "default": "footer" }
+      ]
+    }
+  ],
+  "max_blocks": 4
+}
+{% endschema %}

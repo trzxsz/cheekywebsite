@@ -1,0 +1,12 @@
+<section class="section">
+  <div class="container auth">
+    <div class="section-head" style="text-align:center"><span class="eyebrow" style="justify-content:center">KONTO</span><h1 style="font-size:2rem;margin-top:.5rem">Aktywuj konto</h1></div>
+    {%- form 'activate_customer_password' -%}
+      {%- if form.errors -%}<div class="form-errors">{{ form.errors | default_errors }}</div>{%- endif -%}
+      <div class="field"><label for="ap">Hasło</label><input type="password" name="customer[password]" id="ap" required autocomplete="new-password"></div>
+      <div class="field"><label for="apc">Powtórz hasło</label><input type="password" name="customer[password_confirmation]" id="apc" required autocomplete="new-password"></div>
+      <button type="submit" class="btn btn--primary btn--block magnetic">Aktywuj konto</button>
+      <button type="submit" name="decline" class="btn btn--ghost btn--block mt-1">Odrzuć zaproszenie</button>
+    {%- endform -%}
+  </div>
+</section>

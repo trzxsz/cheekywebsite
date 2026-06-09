@@ -1,0 +1,31 @@
+{
+  "current": {
+    "brand_name": "NOCTRA",
+    "brand_tagline": "Own the dark.",
+    "logo_width": 140,
+    "color_bg": "#0a0a0c",
+    "color_surface": "#16161c",
+    "color_line": "#2a2a33",
+    "color_text": "#f5f5f4",
+    "color_muted": "#9a9aa6",
+    "color_molten": "#ff4d2e",
+    "color_ember": "#ff9500",
+    "color_volt": "#2e7bff",
+    "page_width": 1340,
+    "cart_type": "drawer",
+    "free_shipping_threshold": 199,
+    "social_instagram": "https://instagram.com/noctra",
+    "social_tiktok": "https://tiktok.com/@noctra",
+    "social_youtube": "https://youtube.com/@noctra"
+  },
+  "presets": {
+    "NOCTRA": {
+      "brand_name": "NOCTRA",
+      "brand_tagline": "Own the dark.",
+      "color_bg": "#0a0a0c",
+      "color_surface": "#16161c",
+      "color_molten": "#ff4d2e",
+      "color_volt": "#2e7bff"
+    }
+  }
+}

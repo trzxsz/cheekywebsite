@@ -1,0 +1,19 @@
+{%- comment -%} Usage: {% render 'price', product: product %}  or  {% render 'price', price: variant.price, compare: variant.compare_at_price %} {%- endcomment -%}
+{%- liquid
+  if product
+    assign cur = product.price
+    assign cmp = product.compare_at_price
+    assign vary = product.price_varies
+  else
+    assign cur = price
+    assign cmp = compare
+  endif
+-%}
+<div class="price">
+  {%- if cmp and cmp > cur -%}
+    <span class="price__current" style="color:var(--molten)">{% if vary %}od {% endif %}{{ cur | money }}</span>
+    <span class="price__compare">{{ cmp | money }}</span>
+  {%- else -%}
+    <span class="price__current">{% if vary %}od {% endif %}{{ cur | money }}</span>
+  {%- endif -%}
+</div>

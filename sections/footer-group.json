@@ -1,0 +1,19 @@
+{
+  "type": "footer",
+  "name": "Stopka",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "col1": { "type": "menu", "settings": { "heading": "Sklep", "menu": "main-menu" } },
+        "col2": { "type": "menu", "settings": { "heading": "Pomoc", "menu": "footer" } }
+      },
+      "block_order": ["col1", "col2"],
+      "settings": {
+        "footer_text": "Inżynieria światła i narzędzi inspekcyjnych dla kierowców. Zaprojektowane dla garażu, trasy i terenu.",
+        "show_payment_icons": true
+      }
+    }
+  },
+  "order": ["footer"]
+}

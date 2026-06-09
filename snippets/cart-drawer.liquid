@@ -1,0 +1,20 @@
+{%- comment -%} Slide-out cart. Body/foot are populated by theme.js from /cart.js {%- endcomment -%}
+<aside id="cart-drawer" class="cart-drawer" data-closeable aria-label="Koszyk" aria-hidden="true">
+  <div class="cart-drawer__head">
+    <h3>Twój koszyk</h3>
+    <button class="icon-btn" type="button" data-close aria-label="Zamknij koszyk">{% render 'icon', icon: 'x' %}</button>
+  </div>
+
+  {%- if settings.free_shipping_threshold > 0 -%}
+    <div class="ship-bar" data-ship-bar>
+      <div data-ship-label>Dodaj produkty, by odblokować <strong>darmową wysyłkę</strong>.</div>
+      <div class="ship-bar__track"><div class="ship-bar__fill" data-ship-fill style="width:0%"></div></div>
+    </div>
+  {%- endif -%}
+
+  <div class="cart-drawer__body" data-cart-body>
+    <div class="cart-empty"><p>Twój koszyk jest pusty.</p></div>
+  </div>
+
+  <div class="cart-drawer__foot" data-cart-foot></div>
+</aside>

@@ -1,0 +1,16 @@
+<section class="section">
+  <div class="container auth">
+    <div class="section-head" style="text-align:center"><span class="eyebrow" style="justify-content:center">DOŁĄCZ DO ZAŁOGI</span><h1 style="font-size:2rem;margin-top:.5rem">Załóż konto</h1></div>
+
+    {%- form 'create_customer' -%}
+      {%- if form.errors -%}<div class="form-errors">{{ form.errors | default_errors }}</div>{%- endif -%}
+      <div class="field"><label for="fn">Imię</label><input type="text" name="customer[first_name]" id="fn" autocomplete="given-name"></div>
+      <div class="field"><label for="ln">Nazwisko</label><input type="text" name="customer[last_name]" id="ln" autocomplete="family-name"></div>
+      <div class="field"><label for="rce">E-mail</label><input type="email" name="customer[email]" id="rce" required autocomplete="email"></div>
+      <div class="field"><label for="rcp">Hasło</label><input type="password" name="customer[password]" id="rcp" required autocomplete="new-password"></div>
+      <button type="submit" class="btn btn--primary btn--block magnetic">Utwórz konto</button>
+    {%- endform -%}
+
+    <p class="muted mt-3" style="text-align:center">Masz już konto? <a href="{{ routes.account_login_url }}" style="color:var(--molten)">Zaloguj się</a></p>
+  </div>
+</section>

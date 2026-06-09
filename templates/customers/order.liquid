@@ -1,0 +1,34 @@
+<section class="section">
+  <div class="container" style="max-width:900px">
+    <div class="section-head"><span class="eyebrow">{{ order.created_at | date: '%d.%m.%Y' }}</span><h1 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-top:.5rem">Zamówienie {{ order.name }}</h1></div>
+    <p class="muted">Status: {{ order.financial_status_label }} · {{ order.fulfillment_status_label }}</p>
+
+    <div class="surface mt-3" style="padding:1rem;overflow-x:auto">
+      <table class="table">
+        <thead><tr><th>Produkt</th><th>Ilość</th><th>Cena</th></tr></thead>
+        <tbody>
+          {%- for line in order.line_items -%}
+            <tr>
+              <td>{{ line.title }}</td>
+              <td class="mono">{{ line.quantity }}</td>
+              <td class="mono">{{ line.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+        <tfoot>
+          <tr><th>Wysyłka</th><td></td><td class="mono">{{ order.shipping_price | money }}</td></tr>
+          <tr><th>Suma</th><td></td><td class="mono"><strong>{{ order.total_price | money }}</strong></td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    {%- if order.shipping_address -%}
+      <div class="surface mt-3" style="padding:1.3rem">
+        <h4 class="mono" style="color:var(--muted);margin-bottom:.6rem">ADRES DOSTAWY</h4>
+        {{ order.shipping_address | format_address }}
+      </div>
+    {%- endif -%}
+
+    <a class="btn btn--ghost mt-3" href="{{ routes.account_url }}">{% render 'icon', icon: 'arrow-right' %} Wróć do konta</a>
+  </div>
+</section>
