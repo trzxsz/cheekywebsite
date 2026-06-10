@@ -104,7 +104,10 @@
 .sw-bar-fill { height: 100%; background: var(--sw-red); transform: scaleX(0); transform-origin: left; }
 
 @media (min-width: 1000px) {
-  .sw-story__grid { grid-template-rows: 1fr; grid-template-columns: 1fr 1fr; align-items: center; gap: 3.5rem; padding-block: 0; }
+  /* kolumny muszą się rozciągać (domyślny stretch) — przy align-items:center
+     kolumna z absolutnie pozycjonowanymi slajdami zapada się do 0 wysokości
+     i zdjęcia znikają */
+  .sw-story__grid { grid-template-rows: 1fr; grid-template-columns: 1fr 1fr; gap: 3.5rem; padding-block: 2.5rem; }
 }
 
 /* fallback: prefers-reduced-motion albo brak GSAP — zwykła lista, proste fade */
@@ -115,6 +118,15 @@
 .sw-story.sw-static .sw-slide img { aspect-ratio: 16/10; }
 .sw-story.sw-static .sw-story__bar { display: none; }
 .sw-story.sw-static .sw-cap__num { position: static; display: block; }
+/* w trybie statycznym przeplatamy: zdjęcie → opis → zdjęcie → opis */
+.sw-story.sw-static .sw-slide:nth-child(1) { order: 1; }
+.sw-story.sw-static .sw-cap:nth-child(1) { order: 2; }
+.sw-story.sw-static .sw-slide:nth-child(2) { order: 3; }
+.sw-story.sw-static .sw-cap:nth-child(2) { order: 4; }
+.sw-story.sw-static .sw-slide:nth-child(3) { order: 5; }
+.sw-story.sw-static .sw-cap:nth-child(3) { order: 6; }
+.sw-story.sw-static .sw-slide:nth-child(4) { order: 7; }
+.sw-story.sw-static .sw-cap:nth-child(4) { order: 8; }
 
 /* --------------------------- CECHY -------------------------------- */
 .sw-features { position: relative; padding-block: clamp(4rem, 8vw, 7rem); }
