@@ -1,97 +1,68 @@
 {
   "sections": {
     "hero": {
-      "type": "hero",
+      "type": "swietlik-hero",
       "settings": {
-        "eyebrow": "NOCTRA · PERFORMANCE LIGHTING",
-        "heading": "Zapanuj nad\nciemnością.",
-        "subheading": "Magnetyczne lampy COB, endoskopy USB-C i EDC zaprojektowane dla tych, którzy nie odpuszczają po zmroku.",
-        "button_label": "Kup teraz",
-        "button2_label": "Zobacz bestsellery",
-        "show_scroll": true
+        "eyebrow": "Ultra jasna lampa warsztatowa LED",
+        "heading_white": "Świetlik",
+        "heading_red": "Pro 3000",
+        "tagline": "3000 lumenów. Zero kompromisów.",
+        "lead": "Podstawa magnetyczna, haki obrotowe 360° i składana podstawa 180°. Światło warsztatowe, które pracuje tam, gdzie Ty.",
+        "cta_label": "Kup teraz",
+        "cta2_label": "Zobacz w akcji"
       }
     },
-    "marquee": {
-      "type": "marquee",
+    "story": {
+      "type": "swietlik-story",
       "blocks": {
-        "m1": { "type": "item", "settings": { "icon": "truck", "text": "Wysyłka 24h" } },
-        "m2": { "type": "item", "settings": { "icon": "shield-check", "text": "2 lata gwarancji" } },
-        "m3": { "type": "item", "settings": { "icon": "rotate-ccw", "text": "30 dni na zwrot" } },
-        "m4": { "type": "item", "settings": { "icon": "star", "text": "4.9/5 od kierowców" } },
-        "m5": { "type": "item", "settings": { "icon": "lock", "text": "Bezpieczne płatności" } }
+        "s1": { "type": "slide", "settings": { "num": "3000", "kicker": "Podstawa magnetyczna", "title": "Trzyma się wszędzie", "text": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika. Obie ręce zostają wolne do pracy.", "alt": "Lampa ŚWIETLIK PRO 3000 przyczepiona magnetycznie do drzwi samochodu" } },
+        "s2": { "type": "slide", "settings": { "num": "360°", "kicker": "Haki obrotowe 360°", "title": "Pod maską jak w dzień", "text": "Obrotowe haki zaczepisz o maskę pod dowolnym kątem. Równe, szerokie światło zalewa całą komorę silnika.", "alt": "Lampa ŚWIETLIK PRO 3000 zawieszona na hakach pod maską, oświetlająca silnik" } },
+        "s3": { "type": "slide", "settings": { "num": "180°", "kicker": "Składana podstawa 180°", "title": "Światło tam, gdzie pracujesz", "text": "Składana podstawa pozwala wycelować strumień dokładnie tam, gdzie trzeba — nawet we wnęce koła przy hamulcach.", "alt": "Lampa ŚWIETLIK PRO 3000 we wnęce koła, oświetlająca układ hamulcowy" } }
       },
-      "block_order": ["m1", "m2", "m3", "m4", "m5"]
+      "block_order": ["s1", "s2", "s3"]
     },
-    "bestsellers": {
-      "type": "featured-collection",
+    "features": {
+      "type": "swietlik-features",
+      "settings": { "eyebrow": "Dlaczego Świetlik", "heading": "Zaprojektowany do brudnej roboty" },
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "icon": "zap", "title": "3000 lumenów", "text": "Strumień światła, który zamienia noc w dzień. Żadnych ciemnych kątów." } },
+        "f2": { "type": "feature", "settings": { "icon": "magnet", "title": "Podstawa magnetyczna", "text": "Przyczep lampę do karoserii lub podnośnika i pracuj obiema rękami." } },
+        "f3": { "type": "feature", "settings": { "icon": "rotate-cw", "title": "Haki obrotowe 360°", "text": "Zawiesisz ją na masce, rurze czy półce — pod dowolnym kątem." } },
+        "f4": { "type": "feature", "settings": { "icon": "angle", "title": "Składana podstawa 180°", "text": "Wyceluj światło dokładnie tam, gdzie pracujesz." } },
+        "f5": { "type": "feature", "settings": { "icon": "sun", "title": "4 tryby świecenia", "text": "Pełna moc, połowa mocy, boczny spot i tryb awaryjny." } },
+        "f6": { "type": "feature", "settings": { "icon": "plug", "title": "Ładowanie USB-C", "text": "Jedna ładowarka do wszystkiego. Pełne ładowanie w 2,5 godziny." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"]
+    },
+    "specs": {
+      "type": "swietlik-specs",
+      "settings": { "eyebrow": "Specyfikacja", "heading": "Twarde liczby" },
+      "blocks": {
+        "r1": { "type": "row", "settings": { "label": "Jasność", "count": 3000, "suffix": " lm" } },
+        "r2": { "type": "row", "settings": { "label": "Akumulator", "count": 5000, "suffix": " mAh" } },
+        "r3": { "type": "row", "settings": { "label": "Czas pracy", "count": 8, "suffix": " h" } },
+        "r4": { "type": "row", "settings": { "label": "Ładowanie", "count": 0, "value": "USB-C · 2,5 h" } },
+        "r5": { "type": "row", "settings": { "label": "Szczelność", "count": 0, "value": "IP54" } },
+        "r6": { "type": "row", "settings": { "label": "Waga", "count": 480, "suffix": " g" } },
+        "r7": { "type": "row", "settings": { "label": "Wymiary", "count": 0, "value": "38 × 6,5 × 4 cm" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6", "r7"]
+    },
+    "cta": {
+      "type": "swietlik-cta",
       "settings": {
-        "eyebrow": "TOP WYBÓR KIEROWCÓW",
-        "heading": "Bestsellery",
-        "subheading": "Najczęściej wybierany sprzęt NOCTRA. Sprawdzony w garażu i w terenie.",
-        "products_count": 8,
-        "button_label": "Zobacz wszystkie"
+        "eyebrow": "Oferta startowa",
+        "heading": "Przestań świecić telefonem.",
+        "cta_label": "Kup teraz",
+        "price_text": "249 zł",
+        "old_price_text": "329 zł",
+        "badge_text": "-24%"
       }
     },
-    "categories": {
-      "type": "collection-list",
-      "settings": { "eyebrow": "KATEGORIE", "heading": "Czego dziś potrzebujesz?" },
-      "blocks": {
-        "c1": { "type": "category", "settings": { "title": "Oświetlenie", "icon": "flashlight" } },
-        "c2": { "type": "category", "settings": { "title": "Inspekcja", "icon": "camera" } },
-        "c3": { "type": "category", "settings": { "title": "Narzędzia & EDC", "icon": "wrench" } },
-        "c4": { "type": "category", "settings": { "title": "Organizacja", "icon": "box" } }
-      },
-      "block_order": ["c1", "c2", "c3", "c4"]
-    },
-    "why": {
-      "type": "icon-columns",
-      "settings": { "eyebrow": "DLACZEGO NOCTRA", "heading": "Sprzęt, który nie zawodzi" },
-      "blocks": {
-        "w1": { "type": "item", "settings": { "icon": "truck", "heading": "Wysyłka 24h", "text": "Zamów do 14:00 — wysyłamy tego samego dnia. Darmowo od 199 zł." } },
-        "w2": { "type": "item", "settings": { "icon": "shield-check", "heading": "2 lata gwarancji", "text": "Stoimy za każdym produktem. Wada? Wymieniamy bez pytań." } },
-        "w3": { "type": "item", "settings": { "icon": "rotate-ccw", "heading": "30 dni na zwrot", "text": "Nie pasuje? Odeślij w 30 dni i odzyskaj pełną kwotę." } },
-        "w4": { "type": "item", "settings": { "icon": "lock", "heading": "Bezpieczne płatności", "text": "BLIK, karty, Apple Pay, Przelewy24. Szyfrowanie SSL." } }
-      },
-      "block_order": ["w1", "w2", "w3", "w4"]
-    },
-    "lifestyle": {
-      "type": "image-with-text",
-      "settings": {
-        "eyebrow": "AUTOMOTIVE LIFESTYLE",
-        "heading": "Zbudowane dla tych, którzy nie odpuszczają",
-        "text": "<p>Każdy produkt NOCTRA przechodzi testy w realnych warunkach — od garażu po bezdroża. Bez kompromisów, bez taniej plastikowej tandety.</p>",
-        "button_label": "Poznaj markę"
-      }
-    },
-    "testimonials": {
-      "type": "testimonials",
-      "settings": { "eyebrow": "4.9/5 · PONAD 3000 OPINII", "heading": "Kierowcy nam ufają" },
-      "blocks": {
-        "t1": { "type": "quote", "settings": { "quote": "Magnes trzyma lampę na masce jak przyspawany. Światło mocne i równe — robota w garażu to teraz przyjemność.", "author": "Tomasz R.", "role": "Zweryfikowany zakup", "rating": 5 } },
-        "t2": { "type": "quote", "settings": { "quote": "Endoskop USB-C podłączyłem do telefonu i od razu znalazłem przyczynę stuku w silniku. Bezcenne.", "author": "Kasia D.", "role": "Zweryfikowany zakup", "rating": 5 } },
-        "t3": { "type": "quote", "settings": { "quote": "Zamówiłem w piątek, w poniedziałek było. Jakość premium, czuć różnicę od pierwszego chwytu.", "author": "Paweł S.", "role": "Zweryfikowany zakup", "rating": 5 } }
-      },
-      "block_order": ["t1", "t2", "t3"]
-    },
-    "faq": {
-      "type": "faq",
-      "settings": { "eyebrow": "MASZ PYTANIA?", "heading": "Najczęstsze pytania" },
-      "blocks": {
-        "f1": { "type": "item", "settings": { "question": "Jak szybko realizujecie zamówienia?", "answer": "<p>Zamówienia złożone do 14:00 wysyłamy tego samego dnia roboczego. Dostawa zwykle trwa 1–2 dni robocze.</p>" } },
-        "f2": { "type": "item", "settings": { "question": "Czy mogę zwrócić produkt?", "answer": "<p>Tak — masz 30 dni na zwrot bez podania przyczyny. Zwracamy pełną kwotę po otrzymaniu produktu.</p>" } },
-        "f3": { "type": "item", "settings": { "question": "Jak działa gwarancja?", "answer": "<p>Każdy produkt objęty jest 2-letnią gwarancją. W razie wady wymieniamy sprzęt na nowy.</p>" } },
-        "f4": { "type": "item", "settings": { "question": "Czy endoskop zadziała z moim telefonem?", "answer": "<p>Modele z USB-C działają bezpośrednio. Do starszych telefonów z Lightning potrzebny jest adapter OTG.</p>" } }
-      },
-      "block_order": ["f1", "f2", "f3", "f4"]
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "eyebrow": "DOŁĄCZ DO ZAŁOGI",
-        "heading": "-10% na start",
-        "text": "Zapisz się i odbierz kod rabatowy. Premiery, dropy i porady prosto na maila."
-      }
+    "sticky": {
+      "type": "swietlik-sticky",
+      "settings": { "name": "Świetlik Pro 3000", "price_text": "249 zł", "old_price_text": "329 zł" }
     }
   },
-  "order": ["hero", "marquee", "bestsellers", "categories", "why", "lifestyle", "testimonials", "faq", "newsletter"]
+  "order": ["hero", "story", "features", "specs", "cta", "sticky"]
 }
