@@ -1,0 +1,68 @@
+{% render 'swietlik-assets' %}
+<section class="sw sw-story" id="sw-story">
+  <div class="sw-glow" aria-hidden="true"></div>
+  <div class="sw-container sw-story__grid">
+
+    <div class="sw-story__stage">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          assign n = forloop.index | plus: 1
+          assign fallback = 'swietlik-' | append: n | append: '.jpg' | asset_url
+          assign img_src = block.settings.image | image_url: width: 1600
+          if block.settings.image == blank
+            assign img_src = fallback
+          endif
+        -%}
+        <div class="sw-slide" {{ block.shopify_attributes }}>
+          <img src="{{ img_src }}" alt="{{ block.settings.alt | default: block.settings.title | escape }}" width="1600" height="1000" loading="lazy">
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="sw-story__caps">
+      {%- for block in section.blocks -%}
+        <div class="sw-cap">
+          {%- if block.settings.num != blank -%}
+            <span class="sw-cap__num" aria-hidden="true">{{ block.settings.num }}</span>
+          {%- endif -%}
+          <p class="sw-kicker">{{ block.settings.kicker }}</p>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+  <div class="sw-story__bar"><div class="sw-bar-fill"></div></div>
+</section>
+
+{% schema %}
+{
+  "name": "Świetlik — Scroll story",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slajd",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Zdjęcie (domyślnie: zdjęcia produktu z motywu)" },
+        { "type": "text", "id": "alt", "label": "Tekst alternatywny" },
+        { "type": "text", "id": "num", "label": "Duża liczba w tle (np. 360°)", "default": "3000" },
+        { "type": "text", "id": "kicker", "label": "Nadtytuł", "default": "Podstawa magnetyczna" },
+        { "type": "text", "id": "title", "label": "Tytuł", "default": "Trzyma się wszędzie" },
+        { "type": "textarea", "id": "text", "label": "Opis", "default": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Świetlik — Scroll story",
+      "blocks": [
+        { "type": "slide", "settings": { "num": "3000", "kicker": "Podstawa magnetyczna", "title": "Trzyma się wszędzie", "text": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika. Obie ręce zostają wolne do pracy.", "alt": "Lampa ŚWIETLIK PRO 3000 przyczepiona magnetycznie do drzwi samochodu" } },
+        { "type": "slide", "settings": { "num": "360°", "kicker": "Haki obrotowe 360°", "title": "Pod maską jak w dzień", "text": "Obrotowe haki zaczepisz o maskę pod dowolnym kątem. Równe, szerokie światło zalewa całą komorę silnika.", "alt": "Lampa ŚWIETLIK PRO 3000 zawieszona na hakach pod maską, oświetlająca silnik" } },
+        { "type": "slide", "settings": { "num": "180°", "kicker": "Składana podstawa 180°", "title": "Światło tam, gdzie pracujesz", "text": "Składana podstawa pozwala wycelować strumień dokładnie tam, gdzie trzeba — nawet we wnęce koła przy hamulcach.", "alt": "Lampa ŚWIETLIK PRO 3000 we wnęce koła, oświetlająca układ hamulcowy" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

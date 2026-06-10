@@ -1,0 +1,54 @@
+{% render 'swietlik-assets' %}
+{%- liquid
+  assign img_src = section.settings.image | image_url: width: 1600
+  if section.settings.image == blank
+    assign img_src = 'swietlik-1.jpg' | asset_url
+  endif
+-%}
+<section class="sw sw-hero">
+  <div class="sw-glow" aria-hidden="true"></div>
+  <div class="sw-container">
+    <div class="sw-hero__grid">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="sw-hero__eyebrow" data-reveal>{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h1 data-reveal>{{ section.settings.heading_white }} <em>{{ section.settings.heading_red }}</em></h1>
+        {%- if section.settings.tagline != blank -%}
+          <p class="sw-hero__tagline" data-reveal>{{ section.settings.tagline }}</p>
+        {%- endif -%}
+        {%- if section.settings.lead != blank -%}
+          <p class="sw-hero__lead" data-reveal>{{ section.settings.lead }}</p>
+        {%- endif -%}
+        <div class="sw-hero__cta" data-reveal>
+          <a class="sw-btn" href="#sw-kup">{{ section.settings.cta_label | default: 'Kup teraz' }}</a>
+          <a class="sw-btn sw-btn--ghost" href="#sw-story">{{ section.settings.cta2_label | default: 'Zobacz w akcji' }}</a>
+        </div>
+      </div>
+      <div class="sw-hero__media" data-reveal>
+        <img src="{{ img_src }}" alt="{{ section.settings.image_alt | default: 'Lampa warsztatowa ŚWIETLIK PRO 3000 — 3000 lumenów' | escape }}" width="1024" height="1536" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+  <button class="sw-hero__scroll" type="button" aria-label="Przewiń niżej" onclick="document.getElementById('sw-story') && document.getElementById('sw-story').scrollIntoView({ behavior: 'smooth' })">
+    {% render 'icon', icon: 'chevron-down' %}
+  </button>
+</section>
+
+{% schema %}
+{
+  "name": "Świetlik — Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Nadtytuł", "default": "Ultra jasna lampa warsztatowa LED" },
+    { "type": "text", "id": "heading_white", "label": "Nagłówek (biała część)", "default": "Świetlik" },
+    { "type": "text", "id": "heading_red", "label": "Nagłówek (czerwona część)", "default": "Pro 3000" },
+    { "type": "text", "id": "tagline", "label": "Hasło", "default": "3000 lumenów. Zero kompromisów." },
+    { "type": "textarea", "id": "lead", "label": "Opis", "default": "Podstawa magnetyczna, haki obrotowe 360° i składana podstawa 180°. Światło warsztatowe, które pracuje tam, gdzie Ty." },
+    { "type": "text", "id": "cta_label", "label": "Przycisk główny", "default": "Kup teraz" },
+    { "type": "text", "id": "cta2_label", "label": "Przycisk drugi", "default": "Zobacz w akcji" },
+    { "type": "image_picker", "id": "image", "label": "Zdjęcie produktu (domyślnie: poster 3000 LUMENS)" },
+    { "type": "text", "id": "image_alt", "label": "Tekst alternatywny zdjęcia" }
+  ],
+  "presets": [{ "name": "Świetlik — Hero" }]
+}
+{% endschema %}

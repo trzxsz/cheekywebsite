@@ -1,0 +1,10 @@
+{%- comment -%}
+  Zasoby landingu ŚWIETLIK — font Anton, CSS i skrypty GSAP.
+  Renderowane przez każdą sekcję sw-* (duplikaty są niegroźne: przeglądarka
+  cache'uje pliki, a swietlik.js ma guardy per-element).
+{%- endcomment -%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+{{ 'swietlik.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'gsap.min.js' | asset_url }}" defer></script>
+<script src="{{ 'gsap-scrolltrigger.min.js' | asset_url }}" defer></script>
+<script src="{{ 'swietlik.js' | asset_url }}" defer></script>

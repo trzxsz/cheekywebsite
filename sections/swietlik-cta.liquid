@@ -1,0 +1,79 @@
+{% render 'swietlik-assets' %}
+{%- liquid
+  assign p = section.settings.product
+  assign v = p.selected_or_first_available_variant
+  assign img_src = section.settings.image | image_url: width: 1200
+  if section.settings.image == blank
+    assign img_src = 'swietlik-1.jpg' | asset_url
+  endif
+-%}
+<section class="sw sw-cta" id="sw-kup">
+  <div class="sw-glow sw-glow--strong" aria-hidden="true"></div>
+  <div class="sw-container">
+    <div class="sw-cta__grid">
+
+      <div class="sw-cta__media" data-reveal>
+        <img src="{{ img_src }}" alt="{{ 'Lampa warsztatowa ŚWIETLIK PRO 3000 — zamów teraz' | escape }}" width="1024" height="1536" loading="lazy">
+      </div>
+
+      <div data-reveal>
+        <p class="sw-kicker">{{ section.settings.eyebrow }}</p>
+        <h2>{{ section.settings.heading }}</h2>
+
+        <div class="sw-cta__price">
+          {%- if p != blank -%}
+            <span class="sw-cta__price-now">{{ v.price | money }}</span>
+            {%- if v.compare_at_price > v.price -%}
+              <span class="sw-cta__price-old">{{ v.compare_at_price | money }}</span>
+              <span class="sw-cta__badge">-{{ v.compare_at_price | minus: v.price | times: 100.0 | divided_by: v.compare_at_price | round }}%</span>
+            {%- endif -%}
+          {%- else -%}
+            <span class="sw-cta__price-now">{{ section.settings.price_text | default: '249 zł' }}</span>
+            <span class="sw-cta__price-old">{{ section.settings.old_price_text | default: '329 zł' }}</span>
+            <span class="sw-cta__badge">{{ section.settings.badge_text | default: '-24%' }}</span>
+          {%- endif -%}
+        </div>
+
+        <div class="sw-cta__actions">
+          {%- if p != blank and v.available -%}
+            <form method="post" action="{{ routes.cart_add_url }}" data-add-form>
+              <input type="hidden" name="id" value="{{ v.id }}">
+              <button type="submit" class="sw-btn">{{ section.settings.cta_label | default: 'Kup teraz' }}</button>
+            </form>
+          {%- elsif p != blank -%}
+            <button class="sw-btn" disabled>Niedostępny</button>
+          {%- else -%}
+            {%- comment -%} Wybierz produkt w edytorze motywu, aby przycisk dodawał do koszyka {%- endcomment -%}
+            <a class="sw-btn" href="#">{{ section.settings.cta_label | default: 'Kup teraz' }}</a>
+          {%- endif -%}
+          <a class="sw-btn sw-btn--ghost" href="#sw-specyfikacja">Zobacz specyfikację</a>
+        </div>
+
+        <ul class="sw-trust">
+          <li>{% render 'icon', icon: 'truck' %} Wysyłka 24h</li>
+          <li>{% render 'icon', icon: 'rotate-ccw' %} 30 dni na zwrot</li>
+          <li>{% render 'icon', icon: 'shield-check' %} Gwarancja 2 lata</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Świetlik — Kup teraz",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt (podpina prawdziwy koszyk i ceny)" },
+    { "type": "text", "id": "eyebrow", "label": "Nadtytuł", "default": "Oferta startowa" },
+    { "type": "textarea", "id": "heading", "label": "Nagłówek", "default": "Przestań świecić telefonem." },
+    { "type": "text", "id": "cta_label", "label": "Tekst przycisku", "default": "Kup teraz" },
+    { "type": "header", "content": "Ceny zapasowe (gdy nie wybrano produktu)" },
+    { "type": "text", "id": "price_text", "label": "Cena", "default": "249 zł" },
+    { "type": "text", "id": "old_price_text", "label": "Cena przekreślona", "default": "329 zł" },
+    { "type": "text", "id": "badge_text", "label": "Badge rabatu", "default": "-24%" },
+    { "type": "image_picker", "id": "image", "label": "Zdjęcie (domyślnie: poster 3000 LUMENS)" }
+  ],
+  "presets": [{ "name": "Świetlik — Kup teraz" }]
+}
+{% endschema %}

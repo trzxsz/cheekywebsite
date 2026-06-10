@@ -1,0 +1,58 @@
+{% render 'swietlik-assets' %}
+<section class="sw sw-specs" id="sw-specyfikacja">
+  <div class="sw-glow" aria-hidden="true"></div>
+  <div class="sw-container" style="position:relative">
+    <p class="sw-kicker" data-reveal>{{ section.settings.eyebrow }}</p>
+    <h2 data-reveal>{{ section.settings.heading }}</h2>
+
+    <dl class="sw-specs__list" data-reveal>
+      {%- for block in section.blocks -%}
+        <div class="sw-spec" {{ block.shopify_attributes }}>
+          <dt>{{ block.settings.label }}</dt>
+          {%- if block.settings.count > 0 -%}
+            <dd class="is-number"><span data-sw-count="{{ block.settings.count }}" data-sw-suffix="{{ block.settings.suffix }}">{{ block.settings.count }}{{ block.settings.suffix }}</span></dd>
+          {%- else -%}
+            <dd>{{ block.settings.value }}</dd>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </dl>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Świetlik — Specyfikacja",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Nadtytuł", "default": "Specyfikacja" },
+    { "type": "text", "id": "heading", "label": "Nagłówek", "default": "Twarde liczby" }
+  ],
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Wiersz",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Etykieta", "default": "Jasność" },
+        { "type": "number", "id": "count", "label": "Liczba (animowana; 0 = użyj tekstu)", "default": 0 },
+        { "type": "text", "id": "suffix", "label": "Jednostka po liczbie (np. \" lm\")" },
+        { "type": "text", "id": "value", "label": "Wartość tekstowa (gdy liczba = 0)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Świetlik — Specyfikacja",
+      "blocks": [
+        { "type": "row", "settings": { "label": "Jasność", "count": 3000, "suffix": " lm" } },
+        { "type": "row", "settings": { "label": "Akumulator", "count": 5000, "suffix": " mAh" } },
+        { "type": "row", "settings": { "label": "Czas pracy", "count": 8, "suffix": " h" } },
+        { "type": "row", "settings": { "label": "Ładowanie", "count": 0, "value": "USB-C · 2,5 h" } },
+        { "type": "row", "settings": { "label": "Szczelność", "count": 0, "value": "IP54" } },
+        { "type": "row", "settings": { "label": "Waga", "count": 480, "suffix": " g" } },
+        { "type": "row", "settings": { "label": "Wymiary", "count": 0, "value": "38 × 6,5 × 4 cm" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

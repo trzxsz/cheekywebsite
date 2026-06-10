@@ -1,0 +1,62 @@
+{% render 'swietlik-assets' %}
+<section class="sw sw-features">
+  <div class="sw-container">
+    <p class="sw-kicker" data-reveal>{{ section.settings.eyebrow }}</p>
+    <h2 data-reveal>{{ section.settings.heading }}</h2>
+
+    <div class="sw-features__grid">
+      {%- for block in section.blocks -%}
+        <div class="sw-feature" data-reveal {{ block.shopify_attributes }}>
+          {% render 'icon', icon: block.settings.icon %}
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Świetlik — Cechy",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Nadtytuł", "default": "Dlaczego Świetlik" },
+    { "type": "text", "id": "heading", "label": "Nagłówek", "default": "Zaprojektowany do brudnej roboty" }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Cecha",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Ikona", "default": "zap",
+          "options": [
+            { "value": "zap", "label": "Błyskawica (lumeny)" },
+            { "value": "magnet", "label": "Magnes" },
+            { "value": "rotate-cw", "label": "Obrót 360°" },
+            { "value": "angle", "label": "Kąt 180°" },
+            { "value": "sun", "label": "Tryby świecenia" },
+            { "value": "plug", "label": "Ładowanie USB-C" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Tytuł", "default": "3000 lumenów" },
+        { "type": "textarea", "id": "text", "label": "Opis", "default": "Strumień światła, który zamienia noc w dzień." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Świetlik — Cechy",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "zap", "title": "3000 lumenów", "text": "Strumień światła, który zamienia noc w dzień. Żadnych ciemnych kątów." } },
+        { "type": "feature", "settings": { "icon": "magnet", "title": "Podstawa magnetyczna", "text": "Przyczep lampę do karoserii lub podnośnika i pracuj obiema rękami." } },
+        { "type": "feature", "settings": { "icon": "rotate-cw", "title": "Haki obrotowe 360°", "text": "Zawiesisz ją na masce, rurze czy półce — pod dowolnym kątem." } },
+        { "type": "feature", "settings": { "icon": "angle", "title": "Składana podstawa 180°", "text": "Wyceluj światło dokładnie tam, gdzie pracujesz." } },
+        { "type": "feature", "settings": { "icon": "sun", "title": "4 tryby świecenia", "text": "Pełna moc, połowa mocy, boczny spot i tryb awaryjny." } },
+        { "type": "feature", "settings": { "icon": "plug", "title": "Ładowanie USB-C", "text": "Jedna ładowarka do wszystkiego. Pełne ładowanie w 2,5 godziny." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

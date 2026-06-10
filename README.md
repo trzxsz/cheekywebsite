@@ -75,6 +75,26 @@ locales/       en.default.json
 
 ---
 
+## 🔦 Landing page ŚWIETLIK PRO 3000
+
+Motyw zawiera gotowy one-page landing produktu (szablon `page.swietlik`):
+kinowy hero, **scroll-storytelling** (GSAP pin + scrub, crossfade 3 zdjęć,
+pasek postępu), karty cech, specyfikacja z animowanymi liczbami (count-up),
+sekcja „Kup teraz" z prawdziwym koszykiem i dolny sticky pasek zakupu.
+
+**Jak włączyć po imporcie motywu:**
+
+1. Panel Shopify → **Sklep online → Strony → Dodaj stronę**.
+2. Tytuł np. „Świetlik Pro 3000", treść zostaw pustą.
+3. Po prawej w polu **Szablon** wybierz **page.swietlik** → Zapisz.
+4. Strona działa pod `/pages/swietlik-pro-3000` ze zdjęciami z motywu.
+5. (Zalecane) W edytorze motywu wskaż **Produkt** w sekcjach „Kup teraz"
+   i „Pasek zakupu" — przyciski zaczną dodawać do koszyka, a ceny pobiorą
+   się z produktu automatycznie.
+
+Animacje: GSAP jest dołączony do motywu (`assets/gsap.min.js`); przy
+`prefers-reduced-motion` landing wyświetla wersję statyczną bez pinowania.
+
 ## 🧑‍💻 Podgląd lokalny (opcjonalnie)
 
 Wymaga darmowego konta **Shopify Partners** + sklepu testowego:

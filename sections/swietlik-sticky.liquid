@@ -1,0 +1,41 @@
+{% render 'swietlik-assets' %}
+{%- liquid
+  assign p = section.settings.product
+  assign v = p.selected_or_first_available_variant
+-%}
+<div class="sw sw-stickybar" style="background:rgb(10 10 11 / 0.88)">
+  <div class="sw-container sw-stickybar__inner">
+    <img class="sw-stickybar__thumb" src="{{ 'swietlik-1.jpg' | asset_url }}" alt="" aria-hidden="true" width="44" height="66" loading="lazy">
+    <span class="sw-stickybar__name">{{ section.settings.name | default: 'Świetlik Pro 3000' }}</span>
+    <span class="sw-stickybar__price">
+      {%- if p != blank -%}
+        {%- if v.compare_at_price > v.price -%}<del>{{ v.compare_at_price | money }}</del>{%- endif -%}
+        <strong>{{ v.price | money }}</strong>
+      {%- else -%}
+        <del>{{ section.settings.old_price_text | default: '329 zł' }}</del>
+        <strong>{{ section.settings.price_text | default: '249 zł' }}</strong>
+      {%- endif -%}
+    </span>
+    {%- if p != blank and v.available -%}
+      <form method="post" action="{{ routes.cart_add_url }}" data-add-form>
+        <input type="hidden" name="id" value="{{ v.id }}">
+        <button type="submit" class="sw-btn">Kup teraz</button>
+      </form>
+    {%- else -%}
+      <a class="sw-btn" href="#sw-kup">Kup teraz</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Świetlik — Pasek zakupu",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt (przycisk dodaje do koszyka)" },
+    { "type": "text", "id": "name", "label": "Nazwa", "default": "Świetlik Pro 3000" },
+    { "type": "text", "id": "price_text", "label": "Cena zapasowa", "default": "249 zł" },
+    { "type": "text", "id": "old_price_text", "label": "Cena przekreślona", "default": "329 zł" }
+  ],
+  "presets": [{ "name": "Świetlik — Pasek zakupu" }]
+}
+{% endschema %}
