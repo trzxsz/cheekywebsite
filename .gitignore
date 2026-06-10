@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Shopify CLI
 .shopify/
+
+# source images (compressed copies live in assets/)
+ChatGPT*.png
