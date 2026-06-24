@@ -12,8 +12,7 @@
 
       <a href="{{ routes.root_url }}" class="header__logo" aria-label="{{ brand }}">
         {%- if settings.logo != blank -%}
-          {%- capture logo_style -%}width:{{ settings.logo_width | default: 140 }}px;height:auto{%- endcapture -%}
-          {{ settings.logo | image_url: width: 320 | image_tag: alt: brand, style: logo_style }}
+          {{ settings.logo | image_url: width: 600 | image_tag: class: 'header__logo-img', alt: brand, widths: '160,240,360,600' }}
         {%- else -%}
           <img class="header__logo-img" src="{{ 'podmaska-logo.png' | asset_url }}" alt="{{ brand }}" width="700" height="318">
         {%- endif -%}
