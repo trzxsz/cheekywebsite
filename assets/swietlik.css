@@ -309,3 +309,29 @@
   .sw-hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .sw-hero__media { max-width: 480px; }
 }
+
+/* ========================================================================== */
+/*  PODSTRONY PRAWNE (regulamin, polityki)                                     */
+/* ========================================================================== */
+.pm-legal { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.pm-legal__inner { max-width: 820px; }
+.pm-legal__title { font-size: clamp(2rem, 5vw, 3.2rem); margin: 0.6rem 0 0.4rem; }
+.pm-legal__updated { color: var(--sw-muted); font-size: 0.82rem; margin-bottom: 2.2rem; }
+.pm-legal__body { color: var(--sw-muted); line-height: 1.75; }
+.pm-legal__body h2 { font-family: var(--sw-display); text-transform: uppercase; color: var(--sw-text); font-size: clamp(1.2rem, 2.5vw, 1.5rem); letter-spacing: 0.01em; margin: 2.4rem 0 0.9rem; }
+.pm-legal__body h3 { font-family: var(--sw-body, inherit); font-weight: 700; color: var(--sw-text); font-size: 1.05rem; text-transform: none; margin: 1.4rem 0 0.5rem; }
+.pm-legal__body p { margin-bottom: 0.95rem; }
+.pm-legal__body ul, .pm-legal__body ol { padding-left: 1.4rem; margin-bottom: 1.1rem; }
+.pm-legal__body ul { list-style: disc; }
+.pm-legal__body ol { list-style: decimal; }
+.pm-legal__body li { margin-bottom: 0.4rem; }
+.pm-legal__body strong { color: var(--sw-text); }
+.pm-legal__body a { color: var(--sw-red); text-decoration: underline; text-underline-offset: 2px; }
+.pm-legal__body a:hover { color: var(--sw-red-dark); }
+.pm-legal__body hr { border: 0; border-top: 1px solid var(--sw-line); margin: 2rem 0; }
+.pm-legal__placeholder { color: var(--sw-red); font-weight: 700; }
+.pm-legal__table { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.92rem; }
+.pm-legal__table th, .pm-legal__table td { border: 1px solid var(--sw-line); padding: 0.6rem 0.7rem; text-align: left; vertical-align: top; }
+.pm-legal__table th { color: var(--sw-text); background: rgba(255,255,255,0.03); }
+.pm-legal__form { border: 1px solid var(--sw-line); border-radius: 14px; padding: 1.4rem; background: var(--sw-card); margin: 1.2rem 0; }
+.pm-legal__form p { color: var(--sw-text); }
