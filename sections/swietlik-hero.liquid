@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="sw-hero__media" data-reveal>
-        <img src="{{ img_src }}" alt="{{ section.settings.image_alt | default: 'Lampa warsztatowa ŚWIETLIK PRO 3000 — 3000 lumenów' | escape }}" width="1024" height="1536" loading="eager" fetchpriority="high">
+        <img src="{{ img_src }}" alt="{{ section.settings.image_alt | default: 'Lampa warsztatowa Magnesówka — 3000 lumenów' | escape }}" width="1122" height="1402" loading="eager" fetchpriority="high">
       </div>
     </div>
   </div>
@@ -37,11 +37,11 @@
 
 {% schema %}
 {
-  "name": "Świetlik — Hero",
+  "name": "Magnesówka — Hero",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Nadtytuł", "default": "Ultra jasna lampa warsztatowa LED" },
-    { "type": "text", "id": "heading_white", "label": "Nagłówek (biała część)", "default": "Świetlik" },
-    { "type": "text", "id": "heading_red", "label": "Nagłówek (czerwona część)", "default": "Pro 3000" },
+    { "type": "text", "id": "heading_white", "label": "Nagłówek (biała część)", "default": "Magnesówka" },
+    { "type": "text", "id": "heading_red", "label": "Nagłówek (czerwona część)" },
     { "type": "text", "id": "tagline", "label": "Hasło", "default": "3000 lumenów. Zero kompromisów." },
     { "type": "textarea", "id": "lead", "label": "Opis", "default": "Podstawa magnetyczna, haki obrotowe 360° i składana podstawa 180°. Światło warsztatowe, które pracuje tam, gdzie Ty." },
     { "type": "text", "id": "cta_label", "label": "Przycisk główny", "default": "Kup teraz" },
@@ -49,6 +49,6 @@
     { "type": "image_picker", "id": "image", "label": "Zdjęcie produktu (domyślnie: poster 3000 LUMENS)" },
     { "type": "text", "id": "image_alt", "label": "Tekst alternatywny zdjęcia" }
   ],
-  "presets": [{ "name": "Świetlik — Hero" }]
+  "presets": [{ "name": "Magnesówka — Hero" }]
 }
 {% endschema %}

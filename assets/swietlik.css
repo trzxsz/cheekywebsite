@@ -26,7 +26,11 @@
   font-weight: 400;
 }
 
-.sw-container { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: clamp(1rem, 4vw, 2.5rem); }
+.sw-container {
+  width: 100%; max-width: 1240px; margin-inline: auto;
+  padding-left: max(env(safe-area-inset-left, 0px), clamp(1.25rem, 4.5vw, 2.75rem));
+  padding-right: max(env(safe-area-inset-right, 0px), clamp(1.25rem, 4.5vw, 2.75rem));
+}
 
 .sw-glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(55% 55% at 50% 50%, rgb(227 36 43 / 0.08), transparent 70%); }
 .sw-glow--strong { background: radial-gradient(50% 50% at 50% 55%, rgb(227 36 43 / 0.18), transparent 70%); }
@@ -195,4 +199,113 @@
   .sw-hero__scroll { animation: none; }
   .sw [data-reveal] { opacity: 1; transform: none; transition: none; }
   .sw-btn { transition: none; }
+}
+
+/* ------------------------- TŁO WIDEO (fixed) ---------------------- */
+.sw-bgvideo { position: fixed; inset: 0; z-index: 0; overflow: hidden; background: var(--sw-bg); pointer-events: none; }
+.sw-bgvideo__v { width: 100%; height: 100%; object-fit: cover; }
+.sw-bgvideo__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,11,0.55), rgba(10,10,11,0.8)); }
+
+/* sekcje przezroczyste, żeby odsłonić wideo; treść nad spodem */
+.sw-hero, .sw-story, .sw-features, .sw-specs, .sw-cta {
+  background: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+/* czytelność tekstu nad wideo */
+.sw-hero h1, .sw-hero p, .sw-specs dd, .sw-specs dt { text-shadow: 0 2px 18px rgba(0,0,0,0.5); }
+.sw-specs__list { background: rgba(17,18,20,0.55); border-radius: 14px; padding-inline: 1.2rem; backdrop-filter: blur(3px); }
+/* karty zostają nieprzezroczyste dla kontrastu */
+.sw-feature { background: rgba(20,20,22,0.92); }
+
+/* wideo per-slide w story (zdjęcie -> wideo po 2 s) */
+.sw-slide__v { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 14px; border: 1px solid var(--sw-line); opacity: 0; transition: opacity 0.6s ease; pointer-events: none; }
+.sw-slide__v.is-on { opacity: 1; }
+
+/* --------------------------- KATALOG (kafelki) -------------------- */
+.pm-catalog { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.pm-catalog__head { margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+.pm-catalog__title { font-size: clamp(2rem, 5vw, 3.4rem); margin-top: 0.6rem; }
+.pm-catalog__desc { color: var(--sw-muted); margin-top: 0.8rem; max-width: 46ch; }
+.pm-catalog__grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 700px) { .pm-catalog__grid { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
+@media (min-width: 1000px) { .pm-catalog__grid { grid-template-columns: repeat(4, 1fr); } }
+
+.pm-tile { display: block; border: 1px solid var(--sw-line); border-radius: 16px; overflow: hidden; background: var(--sw-card); transition: border-color 0.25s ease, transform 0.35s ease; }
+.pm-tile:hover { border-color: var(--sw-red); transform: translateY(-5px); }
+.pm-tile__media { position: relative; aspect-ratio: 1; overflow: hidden; background: linear-gradient(160deg, #1a1a1c, #101012); }
+.pm-tile__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.pm-tile:hover .pm-tile__media img { transform: scale(1.05); }
+.pm-tile__ph { position: absolute; inset: 0; display: grid; place-items: center; color: var(--sw-red); opacity: 0.5; }
+.pm-tile__ph svg { width: 38%; height: 38%; }
+.pm-tile__badge { position: absolute; top: 10px; left: 10px; background: var(--sw-red); color: #fff; font-family: var(--sw-display); font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.25rem 0.55rem; border-radius: 6px; }
+.pm-tile__body { padding: 0.95rem 1.05rem 1.15rem; }
+.pm-tile__name { font-family: var(--sw-display); font-size: 1.1rem; text-transform: uppercase; line-height: 1; }
+.pm-tile__price { display: flex; align-items: baseline; gap: 0.5rem; margin-top: 0.5rem; font-family: var(--sw-display); }
+.pm-tile__now { color: var(--sw-red); font-size: 1.2rem; }
+.pm-tile__old { color: var(--sw-muted); text-decoration: line-through; font-size: 0.9rem; }
+.pm-catalog__pager { display: flex; gap: 0.8rem; justify-content: center; margin-top: 2.5rem; }
+
+/* ========================================================================== */
+/*  RESPONSIVE POLISH — mobile / tablet (iPad, iPad Pro)                       */
+/* ========================================================================== */
+
+/* Wideo w story: na mobile/tablecie pokaż CAŁY kadr (bez ucinania od góry) */
+@media (max-width: 1024px) {
+  .sw-slide__v { object-fit: contain; background: #0a0a0b; }
+  .sw-slide img { object-position: center; }
+}
+
+/* Sticky pasek zakupu — szanuj home-indicator iPhone (safe area) */
+.sw-stickybar { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* ---------- MOBILE (<= 600px) ---------- */
+@media (max-width: 600px) {
+  .sw-hero { min-height: auto; padding-block: 3.25rem 2.5rem; }
+  .sw-hero h1 { font-size: clamp(2.8rem, 13vw, 4rem); }
+  .sw-hero__cta { gap: 0.7rem; }
+  .sw-hero__cta .sw-btn { flex: 1 1 auto; }
+
+  /* touch targety >= 44-48px */
+  .sw-btn { min-height: 48px; }
+  .sw-stickybar .sw-btn { min-height: 44px; padding-block: 0.55rem; }
+  .sw-stickybar__inner { gap: 0.55rem; height: 60px; }
+
+  .sw-features { padding-block: 3rem; }
+  .sw-features__grid { gap: 0.8rem; }
+  .sw-feature { padding: 1.3rem; }
+  .sw-specs { padding-block: 3rem; }
+  .sw-specs__list { padding-inline: 1rem; }
+  .sw-spec { padding-block: 1rem; gap: 1rem; }
+  .sw-cta { min-height: auto; padding-block: 3.25rem; }
+  .sw-cta__grid { gap: 1.8rem; }
+  .sw-cta__media { max-width: 300px; }
+
+  .pm-catalog { padding-block: 2.75rem; }
+  .pm-catalog__grid { gap: 0.75rem; }
+  .pm-tile__body { padding: 0.8rem 0.85rem 1rem; }
+  .pm-tile__name { font-size: 1rem; }
+}
+
+/* bardzo wąskie telefony — katalog 1 kolumna, czytelniej */
+@media (max-width: 380px) {
+  .pm-catalog__grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- TABLET: iPad portrait (768) + iPad Pro (834–1024) ---------- */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .sw-container { padding-left: clamp(1.75rem, 4.5vw, 2.5rem); padding-right: clamp(1.75rem, 4.5vw, 2.5rem); }
+  .sw-hero { min-height: 88vh; padding-block: clamp(4rem, 8vw, 6rem); }
+  .sw-features { padding-block: clamp(4rem, 7vw, 6rem); }
+  .sw-features__grid { gap: 1.25rem; }
+  .sw-specs { padding-block: clamp(4rem, 7vw, 6rem); }
+  .sw-cta__grid { gap: 2.5rem; }
+  .pm-catalog { padding-block: clamp(3.5rem, 6vw, 5rem); }
+  .pm-catalog__grid { gap: 1.25rem; }
+}
+
+/* iPad Pro w pionie (1024 szer.): hero w 1 kolumnie — 2 kolumny są tu zbyt ciasne */
+@media (min-width: 1000px) and (max-width: 1024px) {
+  .sw-hero__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .sw-hero__media { max-width: 480px; }
 }

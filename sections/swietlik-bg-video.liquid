@@ -1,0 +1,33 @@
+{% render 'swietlik-assets' %}
+{%- liquid
+  assign src = section.settings.video_url
+  if src == blank
+    assign src = 'swietlik-bg.mp4' | asset_url
+  endif
+  assign scrim = section.settings.scrim | default: 72 | divided_by: 100.0
+-%}
+<div class="sw sw-bgvideo" aria-hidden="true">
+  <video class="sw-bgvideo__v" autoplay loop muted playsinline preload="auto" tabindex="-1">
+    <source src="{{ src }}" type="video/mp4">
+  </video>
+  <div class="sw-bgvideo__scrim" style="opacity:{{ scrim }}"></div>
+</div>
+<script>
+  (function () {
+    var v = document.querySelector('.sw-bgvideo__v');
+    if (!v) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); }
+    else { var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Magnesówka — Tło wideo",
+  "settings": [
+    { "type": "url", "id": "video_url", "label": "Link do wideo (domyślnie: plik w motywie)" },
+    { "type": "range", "id": "scrim", "min": 30, "max": 90, "step": 2, "unit": "%", "label": "Przyciemnienie nakładki", "default": 72 }
+  ],
+  "presets": [{ "name": "Magnesówka — Tło wideo" }]
+}
+{% endschema %}

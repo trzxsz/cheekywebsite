@@ -195,6 +195,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 .header__bar { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: var(--header-h); }
 .header__logo { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; letter-spacing: 0.18em; }
 .header__logo span { color: var(--molten); }
+.header__logo-img { height: 60px; width: auto; display: block; }
+@media (max-width: 600px) { .header__logo-img { height: 46px; } .icon-btn { width: 44px; height: 44px; } }
 
 .nav { display: none; gap: 0.4rem; }
 .nav__item { position: relative; }

@@ -1,86 +1,62 @@
-{%- paginate collection.products by 12 -%}
-<section class="section">
-  <div class="container">
-    <div class="section-head" data-reveal style="max-width:none">
-      <span class="eyebrow">{{ collection.all_products_count }} produktów</span>
-      <h1 style="font-size:clamp(2rem,5vw,3.4rem);margin-top:.6rem">{{ collection.title }}</h1>
-      {%- if collection.description != blank -%}<p>{{ collection.description }}</p>{%- endif -%}
-    </div>
+{% render 'swietlik-assets' %}
+{%- paginate collection.products by 24 -%}
+<section class="sw pm-catalog section">
+  <div class="sw-container">
 
-    <div class="collection__bar">
-      <button class="btn btn--ghost collection__filter-toggle" type="button" data-filters-toggle>
-        {% render 'icon', icon: 'layout-grid' %} Filtry
-      </button>
-      <form method="get" class="collection__sort">
-        <label class="mono muted" for="sort">Sortuj:</label>
-        <select id="sort" name="sort_by" data-auto-submit>
-          {%- for opt in collection.sort_options -%}
-            <option value="{{ opt.value }}"{% if opt.value == collection.sort_by %} selected{% endif %}>{{ opt.name }}</option>
-          {%- endfor -%}
-        </select>
-        {%- for f in collection.filters -%}{%- for v in f.active_values -%}<input type="hidden" name="{{ v.param_name }}" value="{{ v.value }}">{%- endfor -%}{%- endfor -%}
-      </form>
-    </div>
+    <header class="pm-catalog__head" data-reveal>
+      <p class="sw-kicker">Katalog</p>
+      <h1 class="pm-catalog__title">{{ collection.title | default: 'Produkty' }}</h1>
+      {%- if collection.description != blank -%}<p class="pm-catalog__desc">{{ collection.description }}</p>{%- endif -%}
+    </header>
 
-    <div class="collection__layout{% if collection.filters.size == 0 %} collection__layout--nofilters{% endif %}">
-
-      {%- if collection.filters.size > 0 -%}
-        <aside class="collection__filters" data-filters>
-          <form method="get">
-            {%- if collection.sort_by != blank -%}<input type="hidden" name="sort_by" value="{{ collection.sort_by }}">{%- endif -%}
-            {%- for filter in collection.filters -%}
-              {%- if filter.type == 'list' or filter.type == 'boolean' -%}
-                <div class="filter">
-                  <h4 class="mono">{{ filter.label }}</h4>
-                  <div class="filter__values">
-                    {%- for value in filter.values -%}
-                      <a class="filter__chip{% if value.active %} is-active{% endif %}" href="{% if value.active %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}">
-                        {{ value.label }} <span class="muted">{{ value.count }}</span>
-                      </a>
-                    {%- endfor -%}
-                  </div>
-                </div>
+    <div class="pm-catalog__grid">
+      {%- if collection.products.size > 0 -%}
+        {%- for product in collection.products -%}
+          <a class="pm-tile" href="{{ product.url }}" data-reveal>
+            <div class="pm-tile__media">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 700 }}" alt="{{ product.title | escape }}" width="700" height="700" loading="lazy">
+              {%- else -%}
+                <div class="pm-tile__ph">{% render 'icon', icon: 'flashlight' %}</div>
               {%- endif -%}
-            {%- endfor -%}
-          </form>
-        </aside>
+              {%- if product.compare_at_price > product.price -%}<span class="pm-tile__badge">Promocja</span>{%- endif -%}
+            </div>
+            <div class="pm-tile__body">
+              <h3 class="pm-tile__name">{{ product.title }}</h3>
+              <div class="pm-tile__price">
+                <span class="pm-tile__now">{{ product.price | money }}</span>
+                {%- if product.compare_at_price > product.price -%}<span class="pm-tile__old">{{ product.compare_at_price | money }}</span>{%- endif -%}
+              </div>
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- comment -%} Brak produktów w Shopify — pokaż kafelek Magnesówki {%- endcomment -%}
+        <a class="pm-tile" href="{{ routes.root_url }}" data-reveal>
+          <div class="pm-tile__media">
+            <img src="{{ 'swietlik-2.jpg' | asset_url }}" alt="Magnesówka — magnetyczna lampa warsztatowa LED" width="700" height="700" loading="lazy">
+            <span class="pm-tile__badge">Bestseller</span>
+          </div>
+          <div class="pm-tile__body">
+            <h3 class="pm-tile__name">Magnesówka</h3>
+            <div class="pm-tile__price">
+              <span class="pm-tile__now">249 zł</span>
+              <span class="pm-tile__old">329 zł</span>
+            </div>
+          </div>
+        </a>
       {%- endif -%}
-
-      <div>
-        {%- if collection.products.size > 0 -%}
-          <div class="product-grid">
-            {%- for product in collection.products -%}
-              {% render 'product-card', product: product %}
-            {%- endfor -%}
-          </div>
-
-          {%- if paginate.pages > 1 -%}
-            <nav class="pagination mono mt-3">
-              {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}" class="btn btn--ghost">←</a>{%- endif -%}
-              {%- for part in paginate.parts -%}
-                {%- if part.is_link -%}<a href="{{ part.url }}" class="pg">{{ part.title }}</a>
-                {%- else -%}<span class="pg{% if part.title == paginate.current_page %} is-current{% endif %}">{{ part.title }}</span>{%- endif -%}
-              {%- endfor -%}
-              {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="btn btn--ghost">→</a>{%- endif -%}
-            </nav>
-          {%- endif -%}
-        {%- else -%}
-          <div class="surface" style="padding:3rem;text-align:center">
-            <p class="muted">Brak produktów w tej kolekcji.</p>
-            <a class="btn btn--primary mt-3" href="{{ routes.all_products_collection_url }}">Zobacz wszystkie produkty</a>
-          </div>
-        {%- endif -%}
-      </div>
-
     </div>
+
+    {%- if paginate.pages > 1 -%}
+      <nav class="pm-catalog__pager mono">
+        {%- if paginate.previous -%}<a class="sw-btn sw-btn--ghost" href="{{ paginate.previous.url }}">← Poprzednia</a>{%- endif -%}
+        {%- if paginate.next -%}<a class="sw-btn sw-btn--ghost" href="{{ paginate.next.url }}">Następna →</a>{%- endif -%}
+      </nav>
+    {%- endif -%}
+
   </div>
 </section>
-
-<script>
-  document.querySelectorAll('[data-auto-submit]').forEach(function(s){ s.addEventListener('change', function(){ s.form.submit(); }); });
-  var ft = document.querySelector('[data-filters-toggle]'); var fa = document.querySelector('[data-filters]');
-  if(ft && fa){ ft.addEventListener('click', function(){ fa.classList.toggle('is-open'); }); }
-</script>
 {%- endpaginate -%}
 
 {% schema %}

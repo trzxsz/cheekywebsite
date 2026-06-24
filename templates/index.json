@@ -1,11 +1,15 @@
 {
   "sections": {
+    "bgvideo": {
+      "type": "swietlik-bg-video",
+      "settings": { "scrim": 72 }
+    },
     "hero": {
       "type": "swietlik-hero",
       "settings": {
         "eyebrow": "Ultra jasna lampa warsztatowa LED",
-        "heading_white": "Świetlik",
-        "heading_red": "Pro 3000",
+        "heading_white": "Magnesówka",
+        "heading_red": "",
         "tagline": "3000 lumenów. Zero kompromisów.",
         "lead": "Podstawa magnetyczna, haki obrotowe 360° i składana podstawa 180°. Światło warsztatowe, które pracuje tam, gdzie Ty.",
         "cta_label": "Kup teraz",
@@ -15,15 +19,15 @@
     "story": {
       "type": "swietlik-story",
       "blocks": {
-        "s1": { "type": "slide", "settings": { "num": "3000", "kicker": "Podstawa magnetyczna", "title": "Trzyma się wszędzie", "text": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika. Obie ręce zostają wolne do pracy.", "alt": "Lampa ŚWIETLIK PRO 3000 przyczepiona magnetycznie do drzwi samochodu" } },
-        "s2": { "type": "slide", "settings": { "num": "360°", "kicker": "Haki obrotowe 360°", "title": "Pod maską jak w dzień", "text": "Obrotowe haki zaczepisz o maskę pod dowolnym kątem. Równe, szerokie światło zalewa całą komorę silnika.", "alt": "Lampa ŚWIETLIK PRO 3000 zawieszona na hakach pod maską, oświetlająca silnik" } },
-        "s3": { "type": "slide", "settings": { "num": "180°", "kicker": "Składana podstawa 180°", "title": "Światło tam, gdzie pracujesz", "text": "Składana podstawa pozwala wycelować strumień dokładnie tam, gdzie trzeba — nawet we wnęce koła przy hamulcach.", "alt": "Lampa ŚWIETLIK PRO 3000 we wnęce koła, oświetlająca układ hamulcowy" } }
+        "s1": { "type": "slide", "settings": { "num": "3000", "kicker": "Podstawa magnetyczna", "title": "Trzyma się wszędzie", "text": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika. Obie ręce zostają wolne do pracy.", "alt": "Lampa Magnesówka przyczepiona magnetycznie do drzwi samochodu", "video_asset": "pm-story-1.mp4" } },
+        "s2": { "type": "slide", "settings": { "num": "360°", "kicker": "Haki obrotowe 360°", "title": "Pod maską jak w dzień", "text": "Obrotowe haki zaczepisz o maskę pod dowolnym kątem. Równe, szerokie światło zalewa całą komorę silnika.", "alt": "Lampa Magnesówka zawieszona na hakach pod maską, oświetlająca silnik", "video_asset": "pm-story-2.mp4" } },
+        "s3": { "type": "slide", "settings": { "num": "180°", "kicker": "Składana podstawa 180°", "title": "Światło tam, gdzie pracujesz", "text": "Składana podstawa pozwala wycelować strumień dokładnie tam, gdzie trzeba — nawet we wnęce koła przy hamulcach.", "alt": "Lampa Magnesówka we wnęce koła, oświetlająca układ hamulcowy" } }
       },
       "block_order": ["s1", "s2", "s3"]
     },
     "features": {
       "type": "swietlik-features",
-      "settings": { "eyebrow": "Dlaczego Świetlik", "heading": "Zaprojektowany do brudnej roboty" },
+      "settings": { "eyebrow": "Dlaczego Magnesówka", "heading": "Zaprojektowany do brudnej roboty" },
       "blocks": {
         "f1": { "type": "feature", "settings": { "icon": "zap", "title": "3000 lumenów", "text": "Strumień światła, który zamienia noc w dzień. Żadnych ciemnych kątów." } },
         "f2": { "type": "feature", "settings": { "icon": "magnet", "title": "Podstawa magnetyczna", "text": "Przyczep lampę do karoserii lub podnośnika i pracuj obiema rękami." } },
@@ -61,8 +65,8 @@
     },
     "sticky": {
       "type": "swietlik-sticky",
-      "settings": { "name": "Świetlik Pro 3000", "price_text": "249 zł", "old_price_text": "329 zł" }
+      "settings": { "name": "Magnesówka", "price_text": "249 zł", "old_price_text": "329 zł" }
     }
   },
-  "order": ["hero", "story", "features", "specs", "cta", "sticky"]
+  "order": ["bgvideo", "hero", "story", "features", "specs", "cta", "sticky"]
 }

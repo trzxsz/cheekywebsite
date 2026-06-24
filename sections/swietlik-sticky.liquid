@@ -5,8 +5,8 @@
 -%}
 <div class="sw sw-stickybar" style="background:rgb(10 10 11 / 0.88)">
   <div class="sw-container sw-stickybar__inner">
-    <img class="sw-stickybar__thumb" src="{{ 'swietlik-1.jpg' | asset_url }}" alt="" aria-hidden="true" width="44" height="66" loading="lazy">
-    <span class="sw-stickybar__name">{{ section.settings.name | default: 'Świetlik Pro 3000' }}</span>
+    <img class="sw-stickybar__thumb" src="{{ 'swietlik-1.jpg' | asset_url }}" alt="" aria-hidden="true" width="44" height="55" loading="lazy">
+    <span class="sw-stickybar__name">{{ section.settings.name | default: 'Magnesówka' }}</span>
     <span class="sw-stickybar__price">
       {%- if p != blank -%}
         {%- if v.compare_at_price > v.price -%}<del>{{ v.compare_at_price | money }}</del>{%- endif -%}
@@ -29,13 +29,13 @@
 
 {% schema %}
 {
-  "name": "Świetlik — Pasek zakupu",
+  "name": "Magnesówka — Pasek zakupu",
   "settings": [
     { "type": "product", "id": "product", "label": "Produkt (przycisk dodaje do koszyka)" },
-    { "type": "text", "id": "name", "label": "Nazwa", "default": "Świetlik Pro 3000" },
+    { "type": "text", "id": "name", "label": "Nazwa", "default": "Magnesówka" },
     { "type": "text", "id": "price_text", "label": "Cena zapasowa", "default": "249 zł" },
     { "type": "text", "id": "old_price_text", "label": "Cena przekreślona", "default": "329 zł" }
   ],
-  "presets": [{ "name": "Świetlik — Pasek zakupu" }]
+  "presets": [{ "name": "Magnesówka — Pasek zakupu" }]
 }
 {% endschema %}

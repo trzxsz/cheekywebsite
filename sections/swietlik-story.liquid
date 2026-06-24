@@ -13,8 +13,17 @@
             assign img_src = fallback
           endif
         -%}
+        {%- liquid
+          assign vsrc = block.settings.video_url
+          if vsrc == blank and block.settings.video_asset != blank
+            assign vsrc = block.settings.video_asset | asset_url
+          endif
+        -%}
         <div class="sw-slide" {{ block.shopify_attributes }}>
           <img src="{{ img_src }}" alt="{{ block.settings.alt | default: block.settings.title | escape }}" width="1600" height="1000" loading="lazy">
+          {%- if vsrc != blank -%}
+            <video class="sw-slide__v" data-src="{{ vsrc }}" muted loop playsinline preload="none" aria-hidden="true"></video>
+          {%- endif -%}
         </div>
       {%- endfor -%}
     </div>
@@ -38,7 +47,7 @@
 
 {% schema %}
 {
-  "name": "Świetlik — Scroll story",
+  "name": "Magnesówka — Scroll story",
   "max_blocks": 4,
   "blocks": [
     {
@@ -47,6 +56,8 @@
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Zdjęcie (domyślnie: zdjęcia produktu z motywu)" },
         { "type": "text", "id": "alt", "label": "Tekst alternatywny" },
+        { "type": "url", "id": "video_url", "label": "Wideo — link (opcjonalne)" },
+        { "type": "text", "id": "video_asset", "label": "Wideo — plik w motywie (np. pm-story-1.mp4)" },
         { "type": "text", "id": "num", "label": "Duża liczba w tle (np. 360°)", "default": "3000" },
         { "type": "text", "id": "kicker", "label": "Nadtytuł", "default": "Podstawa magnetyczna" },
         { "type": "text", "id": "title", "label": "Tytuł", "default": "Trzyma się wszędzie" },
@@ -56,11 +67,11 @@
   ],
   "presets": [
     {
-      "name": "Świetlik — Scroll story",
+      "name": "Magnesówka — Scroll story",
       "blocks": [
-        { "type": "slide", "settings": { "num": "3000", "kicker": "Podstawa magnetyczna", "title": "Trzyma się wszędzie", "text": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika. Obie ręce zostają wolne do pracy.", "alt": "Lampa ŚWIETLIK PRO 3000 przyczepiona magnetycznie do drzwi samochodu" } },
-        { "type": "slide", "settings": { "num": "360°", "kicker": "Haki obrotowe 360°", "title": "Pod maską jak w dzień", "text": "Obrotowe haki zaczepisz o maskę pod dowolnym kątem. Równe, szerokie światło zalewa całą komorę silnika.", "alt": "Lampa ŚWIETLIK PRO 3000 zawieszona na hakach pod maską, oświetlająca silnik" } },
-        { "type": "slide", "settings": { "num": "180°", "kicker": "Składana podstawa 180°", "title": "Światło tam, gdzie pracujesz", "text": "Składana podstawa pozwala wycelować strumień dokładnie tam, gdzie trzeba — nawet we wnęce koła przy hamulcach.", "alt": "Lampa ŚWIETLIK PRO 3000 we wnęce koła, oświetlająca układ hamulcowy" } }
+        { "type": "slide", "settings": { "num": "3000", "kicker": "Podstawa magnetyczna", "title": "Trzyma się wszędzie", "text": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika. Obie ręce zostają wolne do pracy.", "alt": "Lampa Magnesówka przyczepiona magnetycznie do drzwi samochodu", "video_asset": "pm-story-1.mp4" } },
+        { "type": "slide", "settings": { "num": "360°", "kicker": "Haki obrotowe 360°", "title": "Pod maską jak w dzień", "text": "Obrotowe haki zaczepisz o maskę pod dowolnym kątem. Równe, szerokie światło zalewa całą komorę silnika.", "alt": "Lampa Magnesówka zawieszona na hakach pod maską, oświetlająca silnik", "video_asset": "pm-story-2.mp4" } },
+        { "type": "slide", "settings": { "num": "180°", "kicker": "Składana podstawa 180°", "title": "Światło tam, gdzie pracujesz", "text": "Składana podstawa pozwala wycelować strumień dokładnie tam, gdzie trzeba — nawet we wnęce koła przy hamulcach.", "alt": "Lampa Magnesówka we wnęce koła, oświetlająca układ hamulcowy" } }
       ]
     }
   ]
