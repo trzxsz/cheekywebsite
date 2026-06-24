@@ -1,8 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "bgvideo": {
       "type": "swietlik-bg-video",
-      "settings": { "scrim": 72 }
+      "settings": {
+        "scrim": 72
+      }
     },
     "hero": {
       "type": "swietlik-hero",
@@ -19,38 +30,184 @@
     "story": {
       "type": "swietlik-story",
       "blocks": {
-        "s1": { "type": "slide", "settings": { "num": "3000", "kicker": "Podstawa magnetyczna", "title": "Trzyma się wszędzie", "text": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika. Obie ręce zostają wolne do pracy.", "alt": "Lampa Magnesówka przyczepiona magnetycznie do drzwi samochodu", "video_asset": "pm-story-1.mp4" } },
-        "s2": { "type": "slide", "settings": { "num": "360°", "kicker": "Haki obrotowe 360°", "title": "Pod maską jak w dzień", "text": "Obrotowe haki zaczepisz o maskę pod dowolnym kątem. Równe, szerokie światło zalewa całą komorę silnika.", "alt": "Lampa Magnesówka zawieszona na hakach pod maską, oświetlająca silnik", "video_asset": "pm-story-2.mp4" } },
-        "s3": { "type": "slide", "settings": { "num": "180°", "kicker": "Składana podstawa 180°", "title": "Światło tam, gdzie pracujesz", "text": "Składana podstawa pozwala wycelować strumień dokładnie tam, gdzie trzeba — nawet we wnęce koła przy hamulcach.", "alt": "Lampa Magnesówka we wnęce koła, oświetlająca układ hamulcowy" } }
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "alt": "Lampa Magnesówka przyczepiona magnetycznie do drzwi samochodu",
+            "video_asset": "pm-story-1.mp4",
+            "num": "3000",
+            "kicker": "Podstawa magnetyczna",
+            "title": "Trzyma się wszędzie",
+            "text": "Mocny magnes w podstawie przyczepia lampę do karoserii, drzwi czy podnośnika. Obie ręce zostają wolne do pracy."
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "alt": "Lampa Magnesówka zawieszona na hakach pod maską, oświetlająca silnik",
+            "video_asset": "pm-story-2.mp4",
+            "num": "360°",
+            "kicker": "Haki obrotowe 360°",
+            "title": "Pod maską jak w dzień",
+            "text": "Obrotowe haki zaczepisz o maskę pod dowolnym kątem. Równe, szerokie światło zalewa całą komorę silnika."
+          }
+        },
+        "s3": {
+          "type": "slide",
+          "settings": {
+            "alt": "Lampa Magnesówka we wnęce koła, oświetlająca układ hamulcowy",
+            "num": "180°",
+            "kicker": "Składana podstawa 180°",
+            "title": "Światło tam, gdzie pracujesz",
+            "text": "Składana podstawa pozwala wycelować strumień dokładnie tam, gdzie trzeba — nawet we wnęce koła przy hamulcach."
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3"]
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {}
     },
     "features": {
       "type": "swietlik-features",
-      "settings": { "eyebrow": "Dlaczego Magnesówka", "heading": "Zaprojektowany do brudnej roboty" },
       "blocks": {
-        "f1": { "type": "feature", "settings": { "icon": "zap", "title": "3000 lumenów", "text": "Strumień światła, który zamienia noc w dzień. Żadnych ciemnych kątów." } },
-        "f2": { "type": "feature", "settings": { "icon": "magnet", "title": "Podstawa magnetyczna", "text": "Przyczep lampę do karoserii lub podnośnika i pracuj obiema rękami." } },
-        "f3": { "type": "feature", "settings": { "icon": "rotate-cw", "title": "Haki obrotowe 360°", "text": "Zawiesisz ją na masce, rurze czy półce — pod dowolnym kątem." } },
-        "f4": { "type": "feature", "settings": { "icon": "angle", "title": "Składana podstawa 180°", "text": "Wyceluj światło dokładnie tam, gdzie pracujesz." } },
-        "f5": { "type": "feature", "settings": { "icon": "sun", "title": "4 tryby świecenia", "text": "Pełna moc, połowa mocy, boczny spot i tryb awaryjny." } },
-        "f6": { "type": "feature", "settings": { "icon": "plug", "title": "Ładowanie USB-C", "text": "Jedna ładowarka do wszystkiego. Pełne ładowanie w 2,5 godziny." } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "zap",
+            "title": "3000 lumenów",
+            "text": "Strumień światła, który zamienia noc w dzień. Żadnych ciemnych kątów."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "magnet",
+            "title": "Podstawa magnetyczna",
+            "text": "Przyczep lampę do karoserii lub podnośnika i pracuj obiema rękami."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "rotate-cw",
+            "title": "Haki obrotowe 360°",
+            "text": "Zawiesisz ją na masce, rurze czy półce — pod dowolnym kątem."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "icon": "angle",
+            "title": "Składana podstawa 180°",
+            "text": "Wyceluj światło dokładnie tam, gdzie pracujesz."
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "icon": "sun",
+            "title": "4 tryby świecenia",
+            "text": "Pełna moc, połowa mocy, boczny spot i tryb awaryjny."
+          }
+        },
+        "f6": {
+          "type": "feature",
+          "settings": {
+            "icon": "plug",
+            "title": "Ładowanie USB-C",
+            "text": "Jedna ładowarka do wszystkiego. Pełne ładowanie w 2,5 godziny."
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"]
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "settings": {
+        "eyebrow": "Dlaczego Magnesówka",
+        "heading": "Zaprojektowany do brudnej roboty"
+      }
     },
     "specs": {
       "type": "swietlik-specs",
-      "settings": { "eyebrow": "Specyfikacja", "heading": "Twarde liczby" },
       "blocks": {
-        "r1": { "type": "row", "settings": { "label": "Jasność", "count": 3000, "suffix": " lm" } },
-        "r2": { "type": "row", "settings": { "label": "Akumulator", "count": 5000, "suffix": " mAh" } },
-        "r3": { "type": "row", "settings": { "label": "Czas pracy", "count": 8, "suffix": " h" } },
-        "r4": { "type": "row", "settings": { "label": "Ładowanie", "count": 0, "value": "USB-C · 2,5 h" } },
-        "r5": { "type": "row", "settings": { "label": "Szczelność", "count": 0, "value": "IP54" } },
-        "r6": { "type": "row", "settings": { "label": "Waga", "count": 480, "suffix": " g" } },
-        "r7": { "type": "row", "settings": { "label": "Wymiary", "count": 0, "value": "38 × 6,5 × 4 cm" } }
+        "r1": {
+          "type": "row",
+          "settings": {
+            "label": "Jasność",
+            "count": 3000,
+            "suffix": " lm"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "label": "Akumulator",
+            "count": 5000,
+            "suffix": " mAh"
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "label": "Czas pracy",
+            "count": 8,
+            "suffix": " h"
+          }
+        },
+        "r4": {
+          "type": "row",
+          "settings": {
+            "label": "Ładowanie",
+            "count": 0,
+            "value": "USB-C · 2,5 h"
+          }
+        },
+        "r5": {
+          "type": "row",
+          "settings": {
+            "label": "Szczelność",
+            "count": 0,
+            "value": "IP54"
+          }
+        },
+        "r6": {
+          "type": "row",
+          "settings": {
+            "label": "Waga",
+            "count": 480,
+            "suffix": " g"
+          }
+        },
+        "r7": {
+          "type": "row",
+          "settings": {
+            "label": "Wymiary",
+            "count": 0,
+            "value": "38 × 6,5 × 4 cm"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4", "r5", "r6", "r7"]
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7"
+      ],
+      "settings": {
+        "eyebrow": "Specyfikacja",
+        "heading": "Twarde liczby"
+      }
     },
     "cta": {
       "type": "swietlik-cta",
@@ -65,8 +222,20 @@
     },
     "sticky": {
       "type": "swietlik-sticky",
-      "settings": { "name": "Magnesówka", "price_text": "249 zł", "old_price_text": "329 zł" }
+      "settings": {
+        "name": "Magnesówka",
+        "price_text": "249 zł",
+        "old_price_text": "329 zł"
+      }
     }
   },
-  "order": ["bgvideo", "hero", "story", "features", "specs", "cta", "sticky"]
+  "order": [
+    "bgvideo",
+    "hero",
+    "story",
+    "features",
+    "specs",
+    "cta",
+    "sticky"
+  ]
 }
