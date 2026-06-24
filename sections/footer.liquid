@@ -25,6 +25,20 @@
         {%- endif -%}
       {%- endfor -%}
 
+      {%- comment -%} Podstrony prawne — pojawiają się automatycznie, jeśli strony istnieją {%- endcomment -%}
+      {%- assign legal_handles = 'regulamin-sklepu,polityka-prywatnosci,polityka-zwrotow-i-reklamacji,polityka-cookies' | split: ',' -%}
+      {%- assign has_legal = false -%}
+      {%- for h in legal_handles -%}{%- if pages[h] != empty -%}{%- assign has_legal = true -%}{%- endif -%}{%- endfor -%}
+      {%- if has_legal -%}
+        <div class="footer__col" data-reveal>
+          <h4>Informacje</h4>
+          {%- for h in legal_handles -%}
+            {%- assign pg = pages[h] -%}
+            {%- if pg != empty -%}<a href="{{ pg.url }}">{{ pg.title }}</a>{%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
     </div>
 
     <div class="footer__bottom">
